@@ -4,7 +4,7 @@ import PinIcon from "/public/billeder/pin.png";
 ---
 
 <section class="community">
-  <h2>Find dit tøjfællesskab</h2>
+  <h2 class="mobile-heading">Find dit tøjfællesskab</h2>
   <div class="content">
     <div class="map-wrapper">
       <img
@@ -39,6 +39,7 @@ import PinIcon from "/public/billeder/pin.png";
     </div>
 
     <div class="text">
+      <h2 class="desktop-heading">Find dit tøjfællesskab</h2>
       <p>
         Another Closet er mere end mode – det er et fællesskab. Vi samler dig og
         andre til swap events, workshops og talks om bæredygtig stil. Kom og vær
@@ -62,6 +63,14 @@ import PinIcon from "/public/billeder/pin.png";
     margin-bottom: 2rem;
     text-align: center;
   }
+  .mobile-heading {
+    display: block;
+    text-align: center;
+  }
+
+  .desktop-heading {
+    display: none;
+  }
 
   .content {
     display: flex;
@@ -73,7 +82,7 @@ import PinIcon from "/public/billeder/pin.png";
   .map-wrapper {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
   }
 
   .map {
@@ -108,14 +117,34 @@ import PinIcon from "/public/billeder/pin.png";
   @media (min-width: 768px) {
     .content {
       flex-direction: row-reverse;
-      justify-content: center;
-      align-items: flex-start;
       text-align: left;
+    }
+    .content :first-child {
+      justify-content: end;
     }
 
     .text {
       text-align: left;
-      padding-left: 2rem;
+      font-size: 1.6rem;
+      padding-right: 7rem;
+      padding-bottom: 150px;
+    }
+    h2 {
+      text-align: left;
+    }
+    .mobile-heading {
+      display: none;
+    }
+
+    .desktop-heading {
+      display: block;
+      text-align: left;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1323px) {
+    .text {
+      text-align: left;
+      padding-right: 0rem;
     }
   }
 </style>
