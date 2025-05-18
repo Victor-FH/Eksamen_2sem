@@ -1,1 +1,102 @@
+---
+const faqs = [
+  {
+    question: "Hvor mange stk tøj må jeg låne?",
+    answer:
+      "Du må låne op til 3 stk tøj ad gangen, og bytte dem til et event hver 30. dag.",
+  },
+  {
+    question: "Hvordan returnerer jeg tøjet?",
+    answer: "Du medbringer det til en byttesalon – nemt og hyggeligt!",
+  },
+  {
+    question: "Hvad hvis noget går i stykker?",
+    answer:
+      "Vi forventer almindelig brug – uheld kan ske. Tal med os til et event, så finder vi en løsning.",
+  },
+  {
+    question: "Koster det noget at være med?",
+    answer:
+      "Ja, der er et mindre månedligt medlemsgebyr – det går til drift og events.",
+  },
+  {
+    question: "Er der forskellige størrelser?",
+    answer:
+      "Ja, vi forsøger at have tøj i mange størrelser og stilarter – og vi lytter til ønsker!",
+  },
+];
+---
 
+<style>
+  .faq-container {
+    background-color: #496350;
+    padding: 2rem;
+    border-radius: 1rem;
+    font-family: sans-serif;
+  }
+
+  h2 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .faq-item {
+    background-color: #f2f1ed;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .faq-item:hover {
+    background-color: #e5e5e0;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    margin-top: 0.5rem;
+    color: #333;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 200px;
+  }
+
+  .plus {
+    font-size: 1.5rem;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item.active .plus {
+    transform: rotate(45deg); /* plus bliver til et kryds */
+  }
+</style>
+
+<div class="faq-container">
+  <h2>Ofte stillede spørgsmål</h2>
+  {
+    faqs.map((faq, i) => (
+      <div class="faq-item" onclick={`this.classList.toggle('active')`}>
+        <div class="faq-question">
+          <span>{faq.question}</span>
+          <span class="plus">+</span>
+        </div>
+        <div class="faq-answer">{faq.answer}</div>
+      </div>
+    ))
+  }
+</div>
