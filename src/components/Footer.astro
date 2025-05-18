@@ -1,1 +1,124 @@
+---
 
+---
+
+<footer class="footer">
+  <!-- Kontaktinformation -->
+  <div class="footer-column">
+    <h3>Kontaktinformation</h3>
+    <ul>
+      <li>E-mail: hej@anothercloset.dk</li>
+      <li>Adresse: Tønsbergvej 104 – 4000 Roskilde</li>
+      <li>CVR nr.: 44995875</li>
+    </ul>
+  </div>
+
+  <!-- Hurtige links + Sociale medier -->
+  <div class="footer-column">
+    <h3>Hurtige links</h3>
+    <ul>
+      <li><a href="/src/pages/medlem.astro">Sådan fungerer det</a></li>
+      <li><a href="/src/pages/begivenheder.astro">Find en salon</a></li>
+    </ul>
+
+    <!-- Sociale medier direkte under -->
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/anothercloset.dk/">
+        <img src="/billeder/insta.png" alt="Instagram" />
+      </a>
+      <a href="https://www.facebook.com/anotherclosetdanmark/">
+        <img src="/billeder/facebook.png" alt="Facebook" />
+      </a>
+      <a href="https://www.tiktok.com/@anothercloset.dk">
+        <img src="/billeder/tiktok.png" alt="TikTok" />
+      </a>
+    </div>
+  </div>
+
+  <!-- Logo -->
+  <div class="footer-column logo-container">
+    <img
+      src="/billeder/logo.png"
+      alt="Another Closet logo"
+      class="footer-logo"
+    />
+  </div>
+</footer>
+<style>
+  .footer {
+    background-color: #f9f4e7;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .footer-column {
+    width: 100%;
+  }
+
+  .footer-logo {
+    width: 20rem;
+    height: auto;
+  }
+
+  .footer-column h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0; /* tilføj lidt luft */
+  }
+
+  .footer-column li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .footer-column a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .footer-icons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .footer-icons img {
+    width: 32px;
+    height: auto;
+  }
+
+  /* Desktop layout */
+  @media screen and (min-width: 768px) {
+    .footer {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .footer-column {
+      flex: 1;
+      max-width: 300px;
+    }
+
+    .footer-icons {
+      justify-content: flex-start; /* så det flugter med teksten i desktop */
+    }
+
+    .logo-container {
+      flex: 0 0 auto;
+      text-align: right;
+    }
+  }
+</style>
