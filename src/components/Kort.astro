@@ -1,1 +1,117 @@
+---
+import MapImage from "/public/billeder/maps.png";
+import PinIcon from "/public/billeder/pin.png";
+---
 
+<section class="community">
+  <h2>Find dit tøjfællesskab</h2>
+  <div class="content">
+    <div class="map-wrapper">
+      <img
+        src={MapImage.src}
+        alt="Kort over Danmark med eventsteder"
+        class="map"
+      />
+      <img
+        src={PinIcon.src}
+        class="marker"
+        style="top: 25%; left: 52%;"
+        alt="Marker"
+      />
+      <img
+        src={PinIcon.src}
+        class="marker"
+        style="top: 75%; left: 50%;"
+        alt="Marker"
+      />
+      <img
+        src={PinIcon.src}
+        class="marker"
+        style="top: 15%; left: 82%;"
+        alt="Marker"
+      />
+      <img
+        src={PinIcon.src}
+        class="marker"
+        style="top: 45%; left: 32%;"
+        alt="Marker"
+      />
+    </div>
+
+    <div class="text">
+      <p>
+        Another Closet er mere end mode – det er et fællesskab. Vi samler dig og
+        andre til swap events, workshops og talks om bæredygtig stil. Kom og vær
+        med til at dele, lære og inspirere!
+      </p>
+      <a href="/events" class="event-link">Læs mere om vores events her</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .community {
+    background-color: #fefde9;
+    padding: 2rem 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .map-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .map {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .marker {
+    position: absolute;
+    width: 35px;
+  }
+
+  .text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 500px;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+
+  .event-link {
+    display: block;
+    margin-top: -1rem;
+    font-weight: bold;
+    color: #f6451a;
+    text-decoration: underline;
+  }
+
+  /* 💻 Desktop layout */
+  @media (min-width: 768px) {
+    .content {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    .text {
+      padding: 0;
+    }
+  }
+</style>
