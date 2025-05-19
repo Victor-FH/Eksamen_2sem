@@ -17,7 +17,7 @@ import PinIcon from "/public/billeder/pin.png";
       <a
         href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 63%; left: 77.5%;"
+        style="top: 60%; left: 77.5%;"
       >
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img
@@ -29,7 +29,7 @@ import PinIcon from "/public/billeder/pin.png";
       <a
         href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 63%; left: 85%;"
+        style="top: 60%; left: 85%;"
       >
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img
@@ -41,7 +41,7 @@ import PinIcon from "/public/billeder/pin.png";
       <a
         href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 49%; left: 18%;"
+        style="top: 46%; left: 18%;"
       >
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img
@@ -53,7 +53,7 @@ import PinIcon from "/public/billeder/pin.png";
       <a
         href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 72%; left: 25%;"
+        style="top: 69%; left: 25%;"
       >
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img
@@ -65,7 +65,7 @@ import PinIcon from "/public/billeder/pin.png";
       <a
         href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 62%; left: 83%;"
+        style="top: 59%; left: 83%;"
       >
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img
@@ -77,7 +77,7 @@ import PinIcon from "/public/billeder/pin.png";
       <a
         href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 60%; left: 85%;"
+        style="top: 57%; left: 85%;"
       >
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img
@@ -89,7 +89,7 @@ import PinIcon from "/public/billeder/pin.png";
       <a
         href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 65%; left: 40%;"
+        style="top: 62%; left: 40%;"
       >
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img
@@ -156,7 +156,7 @@ import PinIcon from "/public/billeder/pin.png";
   .marker {
     position: absolute;
     transform: translate(-50%, -100%);
-    width: 30px;
+    width: 4vw;
     cursor: pointer;
     z-index: 1;
     display: flex;
@@ -191,7 +191,7 @@ import PinIcon from "/public/billeder/pin.png";
   .marker:hover .marker-hover {
     opacity: 1;
     pointer-events: auto;
-    width: 150px; /* Hvis du ønsker at udvide det */
+    width: 110px; /* Hvis du ønsker at udvide det */
   }
 
   .text {
@@ -236,6 +236,12 @@ import PinIcon from "/public/billeder/pin.png";
 
     h2 {
       text-align: left;
+    }
+    .marker {
+      width: 2vw;
+    }
+    .marker:hover .marker-hover {
+      width: 170px;
     }
   }
 </style>
