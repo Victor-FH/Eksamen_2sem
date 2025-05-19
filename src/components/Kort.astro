@@ -5,6 +5,7 @@ import PinIcon from "/public/billeder/pin.png";
 
 <section class="community">
   <h2 class="mobile-heading">Find dit tøjfællesskab</h2>
+
   <div class="content">
     <div class="map-wrapper">
       <img
@@ -12,30 +13,91 @@ import PinIcon from "/public/billeder/pin.png";
         alt="Kort over Danmark med eventsteder"
         class="map"
       />
-      <img
-        src={PinIcon.src}
+
+      <a
+        href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 25%; left: 52%;"
-        alt="Marker"
-      />
-      <img
-        src={PinIcon.src}
+        style="top: 63%; left: 77.5%;"
+      >
+        <img src={PinIcon.src} alt="Marker" class="marker-default" />
+        <img
+          src="/public/billeder/PinHover-Roskilde.png"
+          alt="Hover Marker"
+          class="marker-hover"
+        />
+      </a>
+      <a
+        href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 75%; left: 50%;"
-        alt="Marker"
-      />
-      <img
-        src={PinIcon.src}
+        style="top: 63%; left: 85%;"
+      >
+        <img src={PinIcon.src} alt="Marker" class="marker-default" />
+        <img
+          src="/public/billeder/PinHover-AAU.png"
+          alt="Hover Marker"
+          class="marker-hover"
+        />
+      </a>
+      <a
+        href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 15%; left: 82%;"
-        alt="Marker"
-      />
-      <img
-        src={PinIcon.src}
+        style="top: 49%; left: 18%;"
+      >
+        <img src={PinIcon.src} alt="Marker" class="marker-default" />
+        <img
+          src="/public/billeder/PinHover-Ringkobing.png"
+          alt="Hover Marker"
+          class="marker-hover"
+        />
+      </a>
+      <a
+        href="/src/pages/singleview.astro"
         class="marker"
-        style="top: 45%; left: 32%;"
-        alt="Marker"
-      />
+        style="top: 72%; left: 25%;"
+      >
+        <img src={PinIcon.src} alt="Marker" class="marker-default" />
+        <img
+          src="/public/billeder/PinHover-Ribe.png"
+          alt="Hover Marker"
+          class="marker-hover"
+        />
+      </a>
+      <a
+        href="/src/pages/singleview.astro"
+        class="marker"
+        style="top: 62%; left: 83%;"
+      >
+        <img src={PinIcon.src} alt="Marker" class="marker-default" />
+        <img
+          src="/public/billeder/PinHover-Norrebro.png"
+          alt="Hover Marker"
+          class="marker-hover"
+        />
+      </a>
+      <a
+        href="/src/pages/singleview.astro"
+        class="marker"
+        style="top: 60%; left: 85%;"
+      >
+        <img src={PinIcon.src} alt="Marker" class="marker-default" />
+        <img
+          src="/public/billeder/PinHover-Lyngby.png"
+          alt="Hover Marker"
+          class="marker-hover"
+        />
+      </a>
+      <a
+        href="/src/pages/singleview.astro"
+        class="marker"
+        style="top: 65%; left: 40%;"
+      >
+        <img src={PinIcon.src} alt="Marker" class="marker-default" />
+        <img
+          src="/public/billeder/PinHover-Fredericia.png"
+          alt="Hover Marker"
+          class="marker-hover"
+        />
+      </a>
     </div>
 
     <div class="text">
@@ -45,9 +107,9 @@ import PinIcon from "/public/billeder/pin.png";
         andre til swap events, workshops og talks om bæredygtig stil. Kom og vær
         med til at dele, lære og inspirere!
       </p>
-      <a href="/src/pages/begivenheder.astro" class="event-link"
-        >Læs mere om vores events her</a
-      >
+      <a href="/src/pages/begivenheder.astro" class="event-link">
+        Læs mere om vores events her
+      </a>
     </div>
   </div>
 </section>
@@ -55,14 +117,14 @@ import PinIcon from "/public/billeder/pin.png";
 <style>
   .community {
     background-color: #fefde9;
-    padding: 2rem 2rem;
+    padding: 2rem;
   }
 
   h2 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
-    text-align: center;
   }
+
   .mobile-heading {
     display: block;
     text-align: center;
@@ -93,16 +155,51 @@ import PinIcon from "/public/billeder/pin.png";
 
   .marker {
     position: absolute;
-    width: 35px;
     transform: translate(-50%, -100%);
+    width: 30px;
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Marker-billeder */
+  .marker-default,
+  .marker-hover {
+    position: absolute;
+
+    width: 100%;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Hover logic med opacity fremfor display (mere smooth + stabilt) */
+  .marker-hover {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .marker:hover {
+    z-index: 10; /* Sørg for at den er foran alt andet */
+  }
+
+  .marker:hover .marker-default {
+    opacity: 0;
+  }
+
+  .marker:hover .marker-hover {
+    opacity: 1;
+    pointer-events: auto;
+    width: 150px; /* Hvis du ønsker at udvide det */
   }
 
   .text {
     font-size: 1.2rem;
     line-height: 1.8;
     max-width: 500px;
-    padding-bottom: 30px;
     text-align: center;
+    padding-bottom: 30px;
   }
 
   .event-link {
@@ -113,25 +210,20 @@ import PinIcon from "/public/billeder/pin.png";
     text-decoration: underline;
   }
 
-  /* 💻 Desktop layout fix */
+  /* 💻 Desktop layout */
   @media (min-width: 768px) {
     .content {
       flex-direction: row-reverse;
-      text-align: left;
-    }
-    .content :first-child {
-      justify-content: end;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 3rem;
     }
 
     .text {
       text-align: left;
-      font-size: 1.6rem;
-      padding-right: 7rem;
-      padding-bottom: 150px;
+      padding-bottom: 0;
     }
-    h2 {
-      text-align: left;
-    }
+
     .mobile-heading {
       display: none;
     }
@@ -139,12 +231,11 @@ import PinIcon from "/public/billeder/pin.png";
     .desktop-heading {
       display: block;
       text-align: left;
+      margin-bottom: 1rem;
     }
-  }
-  @media (min-width: 768px) and (max-width: 1323px) {
-    .text {
+
+    h2 {
       text-align: left;
-      padding-right: 0rem;
     }
   }
 </style>
