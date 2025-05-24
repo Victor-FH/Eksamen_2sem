@@ -1,5 +1,4 @@
 ---
-
 import Events from "../components/Events.astro";
 import Faq from "../components/Faq.astro";
 import Footer from "../components/Footer.astro";
@@ -9,14 +8,15 @@ import Kort from "../components/Kort.astro";
 import Plakat from "../components/Plakat.astro";
 import Video from "../components/Video.astro";
 import Layout from "../layouts/Layout.astro";
-
+import "../ccs/global.css";
 ---
 
 <html>
   <body>
     <Layout>
-    <Kort />
-    <Faq />
+      <Video />
+      <Kort />
+      <Faq />
     </Layout>
   </body>
 </html>
