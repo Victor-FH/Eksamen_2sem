@@ -103,13 +103,8 @@ import PinIcon from "/public/billeder/pin.png";
     <div class="text">
       <h2 class="desktop-heading">Find dit tøjfællesskab</h2>
       <p>
-        Another Closet er mere end mode – det er et fællesskab. Vi samler dig og
-        andre til swap events, workshops og talks om bæredygtig stil. Kom og vær
-        med til at dele, lære og inspirere!
+       Vælg fra listen herunder hvilket tøjfællesskab du vil være en del af, og kom til månedlige bytte-saloner i dit nærområde.
       </p>
-      <a href="/begivenheder" class="event-link">
-        Læs mere om vores events her
-      </a>
     </div>
   </div>
 </section>
@@ -213,15 +208,22 @@ import PinIcon from "/public/billeder/pin.png";
   /* 💻 Desktop layout */
   @media (min-width: 768px) {
     .content {
-      flex-direction: row-reverse;
+      flex-direction: row;
       justify-content: center;
       align-items: flex-start;
-      gap: 3rem;
+      gap: 2rem;
     }
+
+      .map-wrapper {
+    position: relative;
+    width: 30cqw;
+    max-width: 700px;
+    margin-left: 5em;
+  }
 
     .text {
       text-align: left;
-      padding-bottom: 0;
+      margin: 10rem auto 10rem auto;
     }
 
     .mobile-heading {
@@ -238,7 +240,7 @@ import PinIcon from "/public/billeder/pin.png";
       text-align: left;
     }
     .marker {
-      width: 2vw;
+      width: 1.4vw;
     }
     .marker:hover .marker-hover {
       width: 170px;
