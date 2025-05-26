@@ -1,9 +1,24 @@
 ---
 const faqs = [
   {
-    question: "Hvor mange stk tøj må jeg låne?",
+    question: "Hvilken slags tøj kan man låne?",
     answer:
-      "Du må låne op til 3 stk tøj ad gangen, og bytte dem til et event hver 30. dag.",
+      "I vores garderober finder du et stort udvalg af tøj, fra afslappet hverdagstøj til festtøj - fra mange forskellige brands - alt fra Ganni, Stine Goya, Bitte Kai Rand, Marc Jacobs, Gestuz, H&M, Arket osv. Vi har medlemmer i alle aldre og størrelser, så der er noget for enhver smag!      Ønsket er, at give nyt liv til tøj, der ellers ikke bliver brugt. Derfor er alt tøj velkomment, så længe det er i god stand. Vi bygger vores tøjfællesskab på tillid og garderoberne har altid flotte items af god kvalitet.",
+  },
+  {
+    question: "Er der forskellige størrelser?",
+    answer:
+      "Ja, vi har tøj i alle størrelser, og vi lægger stor vægt på at dele-tøjet matcher forskellige størrelser, smag og stilarter. Cirka 70% af tøjet kommer fra vores medlemmer, hvilket betyder, at der er en bred vifte af personlige stilarter repræsenteret. For at sikre, at vi har noget til alle, supplerer vi med 30% af tøjet, så der altid er et godt udvalg i størrelser fra XS til XL, og noget for enhver smag.",
+  },
+  {
+    question: "Får jeg mit eget udlånte tøj tilbage igen?",
+    answer:
+      "Ja, det gør du! Når du melder dig ind i Another Closet, afleverer du 3 stykker tøj, som går ind i vores fællesgarderobe og cirkuleres. Disse stykker tøj tilhører stadig dig, og du har mulighed for at få dem tilbage, når du ønsker det og bytte dem ud med noget andet du ønsker at låne ud. Når du beslutter dig for at melde dig ud af Another Closet, får du naturligvis dit tøj tilbage. Så du kan altid føle dig tryg ved, at dit tøj er i gode hænder, mens du nyder fordelene ved at være medlem.",
+  },
+  {
+    question: "Hvad hvis noget går i stykker?",
+    answer:
+      "Det er heldigvis meget sjældent, at et stykke tøj ikke kan repareres og fortsat bruges. Derfor afsætter vi 10 kr. af dit abonnement til vedligeholdelse og reparationer. Skulle uheldet være ude, finder vi altid en løsning mellem de involverede parter – og i sidste ende dækker Another Closet tabet, hvis det er nødvendigt.",
   },
   {
     question: "Må jeg tage en ven med til event selvom han ikke er medlem?",
@@ -15,26 +30,11 @@ const faqs = [
     answer:
       "Det er ikke et krav, men vi sætter stor pris på, at du tilmelder dig – så har vi en idé om, hvor mange der kommer, og kan planlægge lidt bedre.",
   },
-  {
-    question: "Hvordan returnerer jeg tøjet?",
-    answer:
-      "Du medbringer det til en byttesalon – så har du også mulighed for at låne 3 nye stk!",
-  },
-  {
-    question: "Hvad hvis noget går i stykker?",
-    answer:
-      "Dit medlemskab indebærer en forsikring, som sørger for at du ikke skal betale, hvis noget går i stykker– vi har dig dækket.",
-  },
-  {
-    question: "Koster det noget at være med?",
-    answer:
-      "Ja, der er et månedligt medlemsgebyr. Men hvis du anmoder om at blive ambassadør, er det gratis.",
-  },
 
   {
-    question: "Er der forskellige størrelser?",
+    question: "Hvad hvis jeg ikke kan komme til en salon?",
     answer:
-      "Ja, vi forsøger at have tøj i mange størrelser og stilarter – og vi lytter til ønsker!",
+      "Det er helt naturligt, at du ikke kan deltage i alle saloner – og det er selvfølgelig helt i orden. Har du ikke mulighed for at komme til en salon, så beholder du blot tøjet en ekstra måned, og bytter det til næste salon. Er du tilknyttet garderoben i København er der altid åbent for at komme forbi mellem kl 10.00 og 17.00 og bytte tøjet.  Er du tilknyttet garderoben i Roskilde har du mulighed for at lave en aftale på mail eller instagram og besøge dit lokale klædeskab og bytte dit tøj der. Vær dog opmærksom på, at udvalget vil være mindre end til salonerne, så vi anbefaler at prioritere salonerne for at få det bedste udvalg.",
   },
   {
     question: "Skal jeg have erfaring for at blive ambassadør?",
@@ -60,9 +60,10 @@ const faqs = [
 
   .faq-item {
     background-color: #f2f1ed;
+
     margin-bottom: 0.8rem;
-    padding: 0.6rem 1rem;
-    border-radius: 0.5rem;
+    padding: 0.3rem 1rem;
+    border-radius: 0.4rem;
     cursor: pointer;
     position: relative;
     transition: background 0.2s;
@@ -85,6 +86,7 @@ const faqs = [
     overflow: hidden;
     transition: max-height 0.4s ease;
     margin-bottom: 0.5rem;
+    line-height: 25px;
     color: #333;
   }
 
