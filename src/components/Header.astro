@@ -1,1 +1,153 @@
+---
+// components/Header.astro
+---
 
+<header>
+  <div class="top-bar">
+    <div class="left">
+      <span class="icon">
+        <!-- Instagram -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+          <path d="M7.5 2C4.462 2 2 4.462 2 7.5v9C2 19.538 4.462 22 7.5 22h9c3.038 0 5.5-2.462 5.5-5.5v-9C22 4.462 19.538 2 16.5 2h-9zM12 8.1a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8zm6-1.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"></path>
+        </svg>
+      </span>
+      <span class="icon">
+        <!-- Facebook (scaled) -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+          <g transform="scale(0.85) translate(2.1, 2)">
+            <path
+              d="M22.675 0h-21.35C.595 0 0 .592 0 1.324v21.352C0 23.408.595 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.764v2.313h3.588l-.467 3.622h-3.121V24h6.116C23.406 24 24 23.408 24 22.676V1.324C24 .592 23.406 0 22.675 0z"
+            ></path>
+          </g>
+        </svg>
+      </span>
+      <span class="icon">
+        <!-- TikTok -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+          <path
+            d="M4 2C2.89 2 2 2.89 2 4v16c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V4c0-1.11-.89-2-2-2H4zm12.69 5.28c.59.5 1.28.9 2.03 1.16v2.36a6.794 6.794 0 0 1-2.1-.48v5.47c0 2.43-1.86 4.39-4.17 4.39s-4.17-1.96-4.17-4.39c0-2.42 1.86-4.38 4.17-4.38.23 0 .45.02.66.06v2.4c-.2-.08-.43-.12-.66-.12-1.03 0-1.87.92-1.87 2.04 0 1.13.84 2.04 1.87 2.04s1.87-.91 1.87-2.04V4.5h2.4c.06.94.49 1.8 1.29 2.28z"
+          ></path>
+        </svg>
+      </span>
+      <span>FIND OS PÅ SOCIALE MEDIER</span>
+    </div>
+    <div class="right">
+      <span>KONTAKT OS</span>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <nav class="nav-links">
+      <div class="side left">
+        <span class="nav-item">DIT FÆLLESSKAB</span>
+      </div>
+      <div class="logo-wrapper">
+        <img src="/billeder/headerlogo.webp" alt="Another logo" class="logo-img" />
+      </div>
+
+      <div class="side right">
+        <span class="nav-item">BLIV MEDLEM</span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Mobile‐first base */
+  header {
+  }
+  .top-bar {
+    background: #ec5a34;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-bar .left,
+  .top-bar .right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .icon svg {
+    display: block;
+  }
+
+  .nav-bar {
+    background: #f9f4e7;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #ec5a34;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .side {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .side.right {
+    justify-content: flex-end;
+  }
+  .logo-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-item {
+    position: relative;
+    cursor: pointer;
+    font-weight: 500;
+    color: #ec5a34;
+    font-size: 0.8rem;
+  }
+  .nav-item::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: #ec5a34;
+    width: 100%;
+    bottom: -3px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.2s ease;
+  }
+  .nav-item:hover::after {
+    transform: scaleX(1);
+  }
+  /* Mobile‐first: match the 1.25rem text size */
+  .logo-wrapper img.logo-img {
+    display: block;
+    height: 2rem;
+    width: auto;
+  }
+
+  /* Desktop “scale up” */
+  @media (min-width: 768px) {
+    .nav-bar {
+      padding: 1.25rem 2rem;
+    }
+    .nav-links {
+      gap: 2rem;
+    }
+    .nav-item {
+      font-size: 1rem;
+    }
+    .logo {
+      font-size: 1.75rem;
+    }
+    .top-bar {
+      font-size: 0.9rem;
+      padding: 0.75rem 2rem;
+    }
+    .logo-wrapper img.logo-img {
+      height: 3rem;
+    }
+  }
+</style>
