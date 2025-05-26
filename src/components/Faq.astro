@@ -6,23 +6,40 @@ const faqs = [
       "Du må låne op til 3 stk tøj ad gangen, og bytte dem til et event hver 30. dag.",
   },
   {
+    question: "Må jeg tage en ven med til event selvom han ikke er medlem?",
+    answer:
+      "Ja, man er altid velkommen til at medbringe en ven eller familiemedlem til vores events.",
+  },
+  {
+    question: "Skal jeg tilmelde mig events på forhånd?",
+    answer:
+      "Det er ikke et krav, men vi sætter stor pris på, at du tilmelder dig – så har vi en idé om, hvor mange der kommer, og kan planlægge lidt bedre.",
+  },
+  {
     question: "Hvordan returnerer jeg tøjet?",
-    answer: "Du medbringer det til en byttesalon – nemt og hyggeligt!",
+    answer:
+      "Du medbringer det til en byttesalon – så har du også mulighed for at låne 3 nye stk!",
   },
   {
     question: "Hvad hvis noget går i stykker?",
     answer:
-      "Vi forventer almindelig brug – uheld kan ske. Tal med os til et event, så finder vi en løsning.",
+      "Dit medlemskab indebærer en forsikring, som sørger for at du ikke skal betale, hvis noget går i stykker– vi har dig dækket.",
   },
   {
     question: "Koster det noget at være med?",
     answer:
-      "Ja, der er et mindre månedligt medlemsgebyr – det går til drift og events.",
+      "Ja, der er et månedligt medlemsgebyr. Men hvis du anmoder om at blive ambassadør, er det gratis.",
   },
+
   {
     question: "Er der forskellige størrelser?",
     answer:
       "Ja, vi forsøger at have tøj i mange størrelser og stilarter – og vi lytter til ønsker!",
+  },
+  {
+    question: "Skal jeg have erfaring for at blive ambassadør?",
+    answer:
+      "Nej, så længe du har et drive og er klar på at gå all ind i vores fælleskab, så behøver du ingen tidligere erfaring.",
   },
 ];
 ---
@@ -43,8 +60,8 @@ const faqs = [
 
   .faq-item {
     background-color: #f2f1ed;
-    margin-bottom: 1rem;
-    padding: 1rem;
+    margin-bottom: 0.8rem;
+    padding: 0.6rem 1rem;
     border-radius: 0.5rem;
     cursor: pointer;
     position: relative;
@@ -60,14 +77,14 @@ const faqs = [
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .faq-answer {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
-    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     color: #333;
   }
 
@@ -76,7 +93,7 @@ const faqs = [
   }
 
   .plus {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     transform: rotate(0deg);
     transition: transform 0.3s ease;
   }
@@ -92,7 +109,7 @@ const faqs = [
       font-size: 1.4rem;
     }
     .faq-item {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
 
     h2 {
