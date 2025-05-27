@@ -1,0 +1,160 @@
+---
+
+---
+
+<section class="event-container">
+  <!-- Billed-side (kun synlig på desktop) -->
+  <div class="plakat">
+    <img
+      src="/public/billeder/plakater/plakat-1_optimized.png"
+      alt="Event billede"
+    />
+  </div>
+
+  <section class="event">
+    <h1>
+      Fællesskab – <span class="highlight">Nørrebro</span>
+    </h1>
+    <p class="event-dato">TORSDAG 22. MAJ KL 17.00 - 20.30</p>
+
+    <div class="event-lokation">
+      <h2>Nørrebro</h2>
+      <p>Guldbergsgade 29 D, igennem butikken Res Res</p>
+    </div>
+
+    <div class="event-tidspunkt">
+      <div>
+        <h3>17.00 - 19.00:</h3>
+        <p>
+          Tøjbytte-salon – helt som vi plejer. Dog skifter vi vintertøj ud med
+          sommerstyles.
+        </p>
+      </div>
+      <div>
+        <h3>19.00 - 19.30:</h3>
+        <p>
+          Anna fra <a href="#">Colour Queen</a> kommer forbi kl. 19.00 - 19.30 og
+          fortæller om farveanalyse
+        </p>
+      </div>
+      <div>
+        <h3>19.30 - 21.00:</h3>
+        <p>
+          Vi inviterer studerende og unge til at komme forbi og opleve Another
+          Closets dele-univers
+        </p>
+      </div>
+    </div>
+
+    <div class="tilmelding">
+      <h2>Meld dig til eventet</h2>
+      <form>
+        <input type="text" name="navn" placeholder="navn" required />
+        <input type="email" name="mail" placeholder="mail" required />
+        <input type="tel" name="tlf" placeholder="tlf" required />
+        <button type="submit">Tilmeld dig</button>
+      </form>
+    </div>
+  </section>
+
+  <style>
+    body {
+      background-color: #fef9e9;
+    }
+    .event-container {
+      display: flex;
+      flex-direction: column; /* Mobil først */
+    }
+
+    .plakat {
+      display: none; /* skjul billede på mobil */
+    }
+
+    .event {
+      background: #fef9e9;
+      padding: 2rem 1rem;
+      max-width: 1800px;
+      color: #333;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: -1rem;
+    }
+    .highlight {
+      color: #ec5a34;
+    }
+    .event-dato {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .event-lokation {
+      font-size: 1.2rem;
+    }
+    .event-lokation h2 {
+      margin-bottom: -15px;
+    }
+    .event-lokation p {
+      padding-bottom: 30px;
+    }
+    .event-tidspunkt {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+    .tilmelding {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    input {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #ec5a34;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Desktop layout */
+    @media (min-width: 768px) {
+      .event-container {
+        flex-direction: row;
+        height: 100vh;
+      }
+
+      .plakat {
+        display: block;
+        max-width: 400px;
+        padding-left: 100px;
+      }
+
+      .plakat img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .event-content {
+        width: 50%;
+        padding: 4rem;
+        overflow-y: auto;
+      }
+    }
+  </style>
+</section>
