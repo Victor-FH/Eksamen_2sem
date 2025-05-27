@@ -4,7 +4,9 @@
       <span class="icon">
         <!-- Instagram -->
         <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-          <path d="M7.5 2C4.462 2 2 4.462 2 7.5v9C2 19.538 4.462 22 7.5 22h9c3.038 0 5.5-2.462 5.5-5.5v-9C22 4.462 19.538 2 16.5 2h-9zM12 8.1a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8zm6-1.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"></path>
+          <path
+            d="M7.5 2C4.462 2 2 4.462 2 7.5v9C2 19.538 4.462 22 7.5 22h9c3.038 0 5.5-2.462 5.5-5.5v-9C22 4.462 19.538 2 16.5 2h-9zM12 8.1a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8zm6-1.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"
+          ></path>
         </svg>
       </span>
       <span class="icon">
@@ -35,10 +37,25 @@
   <div class="nav-bar">
     <nav class="nav-links">
       <div class="side left">
-        <span class="nav-item">DIT FÆLLESSKAB</span>
+        <div class="dropdown">
+          <div class="nav-item">DIT FÆLLESSKAB ▾</div>
+          <ul class="dropdown-menu">
+            <li><a href="/Roskilde">Roskilde</a></li>
+            <li><a href="/Nørrebro">Nørrebro</a></li>
+            <li><a href="/Lyngby">Lyngby</a></li>
+            <li><a href="/Ringkøbing">Ringkøbing</a></li>
+            <li><a href="/Ribe">Ribe</a></li>
+            <li><a href="/Aau Kbh">AAU Kbh</a></li>
+            <li><a href="/Fredericia">Fredericia</a></li>
+          </ul>
+        </div>
       </div>
       <div class="logo-wrapper">
-        <img src="/billeder/headerlogo.webp" alt="Another logo" class="logo-img" />
+        <img
+          src="/billeder/headerlogo.webp"
+          alt="Another logo"
+          class="logo-img"
+        />
       </div>
 
       <div class="side right">
@@ -52,6 +69,55 @@
   /* Mobile‐first base */
   header {
   }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fef9e9;
+    list-style: none;
+    margin-right: 20px;
+    padding: 0.5rem 0;
+    text-align: left;
+    left: -25%;
+    top: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    min-width: 120px;
+  }
+
+  .dropdown-menu li a {
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    text-decoration: none;
+    color: #ec5a34;
+    font-weight: 500;
+  }
+
+  /* Hover effekt med orange streg under */
+  .dropdown-menu li a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: #ec5a34;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.2s ease;
+  }
+
+  .dropdown-menu li a:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Gør dropdown relativ til sin container */
+  .dropdown {
+    position: relative;
+    cursor: pointer;
+  }
+
   .top-bar {
     background: #ec5a34;
     color: #fff;
@@ -151,5 +217,36 @@
     .logo-wrapper img.logo-img {
       height: 3rem;
     }
+    .dropdown-menu {
+      margin-right: 20px;
+      padding: 0.5rem 0;
+      left: -25%;
+      top: 125%;
+      min-width: 250px;
+    }
+
+    .dropdown-menu li a {
+      font-size: 18px;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+    }
   }
 </style>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const navItem = document.querySelector(".nav-item");
+    const menu = document.querySelector(".dropdown-menu");
+
+    navItem.addEventListener("click", () => {
+      const isVisible = menu.style.display === "block";
+      menu.style.display = isVisible ? "none" : "block";
+    });
+
+    // Luk dropdown hvis man klikker udenfor
+    document.addEventListener("click", (e) => {
+      if (!navItem.contains(e.target) && !menu.contains(e.target)) {
+        menu.style.display = "none";
+      }
+    });
+  });
+</script>
