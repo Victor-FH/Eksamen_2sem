@@ -71,7 +71,6 @@
     display: none;
   }
 
-  /* Mobile-first: single-column grid layout */
   .slide {
     display: grid;
     grid-template-areas:
@@ -86,7 +85,6 @@
     text-align: center;
     color: white;
 
-    /* retain scroll-snap & sizing */
     flex: 0 0 100vw;
     width: 100vw;
     scroll-snap-align: start;
@@ -97,7 +95,6 @@
     box-sizing: border-box;
   }
 
-  /* allow the headings and paragraph to participate in the grid directly */
   .text {
     display: contents;
   }
@@ -169,7 +166,6 @@
     background: #ec5a34;
   }
 
-  /* Desktop: revert to two-column flex and center the group */
   @media (min-width: 768px) {
     .slide {
       display: flex;
