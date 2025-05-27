@@ -1,64 +1,49 @@
-<img class="line" src="/public/billeder/plakater/line.png" alt="">
-<div class="pins">
-    <img class="pin_1" src="/public/billeder/plakater/pin.png"  alt="">
-    <img class="pin_2"src="/public/billeder/plakater/pin.png" alt="" >
-    <img class="pin_3 hide"src="/public/billeder/plakater/pin.png" alt="">
-    <img class="pin_4 hide"src="/public/billeder/plakater/pin.png" alt="">
-</div>
+<img class="line" src="/public/billeder/plakater/line.png" alt="" />
 <div class="posters">
-    <img src="/public/billeder/plakater/plakat-1_optimized.png" alt="">
-    <img src="/public/billeder/plakater/plakat-2_optimized.png" alt="">
-    <img class="hide" src="/public/billeder/plakater/plakat-3_optimized.png" alt="">
-    <img class="hide" src="/public/billeder/plakater/plakat-4_optimized.png" alt="">
+  <img src="/billeder/plakater/plakat1.webp" alt="plakat1" />
+  <img src="/public/billeder/plakater/plakat2.webp" alt="plakat2" />
+  <img class="hide" src="/public/billeder/plakater/plakat3.webp" alt="plakat3" />
+  <img class="hide" src="/public/billeder/plakater/plakat4.webp" alt="plakat4" />
 </div>
 
 <style>
-    body{
-        background-color: #fefde9;
-    }
-    img{
-        width:30%;
-    }
-    .line{
-        margin-top: 1rem;
-        width: 100%;
-    }
-    .pins img{
-        width: 30%;
-        /* width: 5%; */
+  body {
+    background-color: #fefde9;
+  }
+
+  .line {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .posters {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem auto 5rem;
+    top: -4rem;
+  }
+  .posters img:hover {
+    /* scale up slightly */
+    transform: scale(1.25);
+    z-index: 3; /* bring hovered poster above its neighbors */
+  }
+
+  .hide {
+    display: none;
+  }
+  /* Mobile-first default (applies everywhere unless overridden) */
+  .posters img {
+    width: 30%; /* or whatever mobile size you want */
+    height: auto;
+  }
+  @media (min-width: 768px) {
+    .hide {
+      display: inline-block;
     }
 
-    .pins{
-        position: absolute;
-        z-index: 1;
+    .posters img {
+      width: 12%; /* only posters shrink to 12% on desktop */
     }
-
-    .pin_1{
-        top: 62%; left: 40%;
-    }
-
-    .posters{
-        position: relative;
-        display: flex;
-        justify-content: space-evenly;
-        margin: 2rem auto 5rem;
-    }
-
-    .hide{
-        display: none;
-    }
-    @media (min-width: 768px) {
-        .hide{
-            display: inline-block;
-        }
-
-        img{
-            width: 10%;
-        }
-
-        .pins img{
-            width: 20%;
-        }
-
-    }
+  }
 </style>
