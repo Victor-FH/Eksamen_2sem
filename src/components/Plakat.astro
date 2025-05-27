@@ -1,1 +1,64 @@
+<img class="line" src="/public/billeder/plakater/line.png" alt="">
+<div class="pins">
+    <img class="pin_1" src="/public/billeder/plakater/pin.png"  alt="">
+    <img class="pin_2"src="/public/billeder/plakater/pin.png" alt="" >
+    <img class="pin_3 hide"src="/public/billeder/plakater/pin.png" alt="">
+    <img class="pin_4 hide"src="/public/billeder/plakater/pin.png" alt="">
+</div>
+<div class="posters">
+    <img src="/public/billeder/plakater/plakat-1_optimized.png" alt="">
+    <img src="/public/billeder/plakater/plakat-2_optimized.png" alt="">
+    <img class="hide" src="/public/billeder/plakater/plakat-3_optimized.png" alt="">
+    <img class="hide" src="/public/billeder/plakater/plakat-4_optimized.png" alt="">
+</div>
 
+<style>
+    body{
+        background-color: #fefde9;
+    }
+    img{
+        width:30%;
+    }
+    .line{
+        margin-top: 1rem;
+        width: 100%;
+    }
+    .pins img{
+        width: 30%;
+        /* width: 5%; */
+    }
+
+    .pins{
+        position: absolute;
+        z-index: 1;
+    }
+
+    .pin_1{
+        top: 62%; left: 40%;
+    }
+
+    .posters{
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        margin: 2rem auto 5rem;
+    }
+
+    .hide{
+        display: none;
+    }
+    @media (min-width: 768px) {
+        .hide{
+            display: inline-block;
+        }
+
+        img{
+            width: 10%;
+        }
+
+        .pins img{
+            width: 20%;
+        }
+
+    }
+</style>
