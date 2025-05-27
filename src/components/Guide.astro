@@ -1,1 +1,216 @@
+<section class="guide-carousel">
+  <div class="slides">
+    <div id="slide1" class="slide" style="background: #526153">
+      <a href="#slide3" class="arrow prev">‹</a>
+      <a href="#slide2" class="arrow next">›</a>
+      <div class="text">
+        <h2>Hvordan fungerer det?</h2>
+        <h3>1. Find dit tøjfællesskab</h3>
+        <p>Vi tilknytter kurérer over hele landet, og du kan altid skifte, hvis du ønsker det.</p>
+      </div>
+      <img src="/billeder/1guide.webp" alt="" />
+      <div class="dots">
+        <a href="#slide1" class="dot active"></a>
+        <a href="#slide2" class="dot"></a>
+        <a href="#slide3" class="dot"></a>
+      </div>
+    </div>
 
+    <div id="slide2" class="slide" style="background: #D95C3B">
+      <a href="#slide1" class="arrow prev">‹</a>
+      <a href="#slide3" class="arrow next">›</a>
+      <div class="text">
+        <h2>Hvordan fungerer det?</h2>
+        <h3>2. Mød op til en byttesalon</h3>
+        <p>Én gang om måneden holder vi bytte-saloner i dit nærområde. Mød op og få byttet dig til nye fede styles.</p>
+      </div>
+      <img src="/billeder/2guide.webp" alt="" />
+      <div class="dots">
+        <a href="#slide1" class="dot"></a>
+        <a href="#slide2" class="dot active"></a>
+        <a href="#slide3" class="dot"></a>
+      </div>
+    </div>
+
+    <div id="slide3" class="slide" style="background: #526153">
+      <a href="#slide2" class="arrow prev">‹</a>
+      <a href="#slide1" class="arrow next">›</a>
+      <div class="text">
+        <h2>Hvordan fungerer det?</h2>
+        <h3>3. Nyd dit nye tøj</h3>
+        <p>Nyd dit nye tøj i en hel måned, inden vi mødes igen til en kop kaffe og endnu et byt.</p>
+      </div>
+      <img src="/billeder/3guide.webp" alt="" />
+      <div class="dots">
+        <a href="#slide1" class="dot"></a>
+        <a href="#slide2" class="dot"></a>
+        <a href="#slide3" class="dot active"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .guide-carousel {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .slides {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .slides::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mobile-first: single-column grid layout */
+  .slide {
+    display: grid;
+    grid-template-areas:
+      "title"
+      "image"
+      "subtitle"
+      "description"
+      "dots";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
+    justify-items: center;
+    text-align: center;
+    color: white;
+
+    /* retain scroll-snap & sizing */
+    flex: 0 0 100vw;
+    width: 100vw;
+    scroll-snap-align: start;
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    min-height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  /* allow the headings and paragraph to participate in the grid directly */
+  .text {
+    display: contents;
+  }
+
+  .slide h2 {
+    grid-area: title;
+    margin: 0.5rem 0;
+  }
+
+  .slide img {
+    grid-area: image;
+    width: 60%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .slide h3 {
+    grid-area: subtitle;
+    margin: 0.5rem 0;
+  }
+
+  .slide p {
+    grid-area: description;
+    margin: 0.5rem 0;
+    max-width: 80%;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    text-decoration: none;
+    color: white;
+    background: none;
+    padding: 0.25rem 0.5rem;
+    z-index: 2;
+  }
+
+  .prev {
+    left: 1rem;
+  }
+
+  .next {
+    right: 1rem;
+  }
+
+  .dots {
+    grid-area: dots;
+    position: static;
+    transform: none;
+    display: flex;
+    gap: 0.75rem;
+    z-index: 2;
+    margin-top: 1rem;
+  }
+
+  .dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: white;
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .dot.active {
+    background: #ec5a34;
+  }
+
+  /* Desktop: revert to two-column flex and center the group */
+  @media (min-width: 768px) {
+    .slide {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      gap: 1rem;
+      font-size: clamp(1rem, 2vw, 3rem);
+    }
+
+    .slide h2 {
+      margin-bottom: 2rem;
+    }
+
+    .text {
+      display: block;
+      flex: 0 0 40%;
+    }
+
+    .slide img {
+      width: 40%;
+      max-width: 100%;
+      height: auto;
+      flex: 0 0 40%;
+    }
+
+    .arrow {
+      font-size: 2.5rem;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dot {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+</style>
