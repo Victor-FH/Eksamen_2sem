@@ -1,1 +1,15 @@
+---
+const url =
+  "https://bwzlyynicfdhqxvfotfg.supabase.co/rest/v1/begivenheder?select=*";
+const key =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emx5eW5pY2ZkaHF4dmZvdGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzMjk5NjUsImV4cCI6MjA2MzkwNTk2NX0.iWIvQ6JD4u7LRTB0dUL8CuJFoys5U8sWInPGsV-kdjM";
 
+const options = {
+  headers: {
+    apikey: key,
+  },
+};
+
+const data = await fetch(url, options).then((response) => response.json());
+console.log(data);
+---
