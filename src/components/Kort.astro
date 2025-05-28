@@ -117,12 +117,12 @@ import PinIcon from "/public/billeder/pin.png";
 <style>
   .community {
     background-color: #fefde9;
-    padding: 2rem;
+    padding: 5%;
   }
 
   h2 {
     font-size: 1.8rem;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
   }
 
   .mobile-heading {
@@ -135,22 +135,24 @@ import PinIcon from "/public/billeder/pin.png";
   }
 
   .content {
+    margin-top: -50px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
     align-items: center;
   }
 
   .map-wrapper {
     position: relative;
     width: 100%;
-    max-width: 700px;
+    max-width: 550px;
   }
 
   .map {
     width: 100%;
     display: block;
-    border-radius: 10px;
+    border-radius: 0px;
   }
 
   .marker {
@@ -168,7 +170,6 @@ import PinIcon from "/public/billeder/pin.png";
   .marker-default,
   .marker-hover {
     position: absolute;
-
     width: 100%;
     transition: opacity 0.5s ease;
   }
@@ -181,7 +182,7 @@ import PinIcon from "/public/billeder/pin.png";
   }
 
   .marker:hover {
-    z-index: 10; /* Sørg for at den er foran alt andet */
+    z-index: 10;
   }
 
   .marker:hover .marker-default {
@@ -191,15 +192,16 @@ import PinIcon from "/public/billeder/pin.png";
   .marker:hover .marker-hover {
     opacity: 1;
     pointer-events: auto;
-    width: 110px; /* Hvis du ønsker at udvide det */
+    width: 110px;
   }
 
   .text {
     font-size: 1.2rem;
     line-height: 1.8;
-    max-width: 500px;
+    max-width: 550px;
     text-align: center;
-    padding-bottom: 30px;
+    margin-top: -50px;
+    padding: 5%;
   }
 
   .event-link {
@@ -216,12 +218,13 @@ import PinIcon from "/public/billeder/pin.png";
       flex-direction: row-reverse;
       justify-content: center;
       align-items: flex-start;
-      gap: 3rem;
+      gap: 0rem;
     }
 
     .text {
       text-align: left;
-      padding-bottom: 0;
+      margin-top: 0px;
+      padding: 5%;
     }
 
     .mobile-heading {
@@ -232,6 +235,10 @@ import PinIcon from "/public/billeder/pin.png";
       display: block;
       text-align: left;
       margin-bottom: 1rem;
+    }
+    .community {
+      padding: 150px;
+      margin-top: -120px;
     }
 
     h2 {
