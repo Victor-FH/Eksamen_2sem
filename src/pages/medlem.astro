@@ -1,13 +1,20 @@
 ---
-
+import Faq from "../components/Faq.astro";
+import MedlemBanner from "../components/MedlemBanner.astro";
+import MembershipSection from "../components/MembershipSection.astro";
+import AmbassadorSection from "../components/AmbassadorSection.astro";
 import Layout from "../layouts/Layout.astro";
 import MedlemPopup from "../components/Medlem_popup.astro";
 import AmbasPopup from "../components/Ambas_popup.astro";
-
 ---
 
 
     <Layout>
+      <MedlemBanner />
+      <MembershipSection />
+      <AmbassadorSection />
+      <Faq />
+
         <button id="open-popup">Åbn Ambassadør popup</button>
         <button id="open-medlem-popup">Åbn Medlem popup</button>
 
