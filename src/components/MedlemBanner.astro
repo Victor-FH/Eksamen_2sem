@@ -1,0 +1,67 @@
+---
+
+---
+
+<section class="medlem-banner">
+  <div class="medlem-banner__grid">
+    <div class="medlem-banner__image">
+      <img src="/public/billeder/medlemsbanner.webp" alt="Medlemskab billede 1" />
+    </div>
+  </div>
+  <div class="medlem-banner__intro">
+    <h2>Medlemskab eller Ambassadør?</h2>
+    <p>Er du i tvivl om du skal blive medlem eller Ambassadør? På denne side kan du læse mere om, hvad de to roller indebærer – og finde ud af, hvad der passer bedst til dig.</p>
+  </div>
+</section>
+
+<style>
+  body {
+    background-color: #fef9e9;
+  }
+  .medlem-banner {
+    position: relative;
+    overflow: visible; /* allow the intro to flow outside */
+  }
+
+  .medlem-banner__image img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .medlem-banner__intro {
+    position: absolute;
+    left: 50%;
+    bottom: -2rem; /* only pull it down 2rem, not 10rem */
+    transform: translateX(-50%);
+    width: calc(100% - 2rem); /* span almost the full width, with a little margin */ /* match your container width */
+    background: #fef9e9; /* your pale-yellow */
+    padding: 2rem;
+    border-radius: 5rem 5rem 0 0; /* only top corners round */
+    text-align: center;
+    font-size: clamp(0.8rem, 1.25vw, 1.2rem);
+  }
+  .medlem-banner__intro p {
+    max-width: 50ch;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 768px) {
+    .medlem-banner__text {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .medlem-banner__text h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .medlem-banner__intro {
+      border-radius: 10rem 10rem 0 0;
+    }
+    .medlem-banner__intro p {
+      max-width: 80ch;
+    }
+  }
+</style>

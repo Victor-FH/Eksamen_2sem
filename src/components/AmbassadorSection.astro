@@ -1,0 +1,236 @@
+---
+// src/components/AmbassadorSection.astro
+---
+
+<section id="ambassadør" class="ambassador-section">
+  <div class="wrapper">
+    <!-- Header with toggle button -->
+    <div class="ambassador-section__header">
+      <h3 class="ambassador-section__title">Ambassadør</h3>
+      <button id="ambassadorToggle" class="ambassador-section__toggle" aria-label="Åbn sektion">+</button>
+    </div>
+
+    <!-- COLLAPSED state: image + quote -->
+    <div id="ambassadorCollapsed" class="ambassador-collapsed">
+      <img src="/images/ambassador-lotte.jpg" alt="Lotte, Ambassadør" class="ambassador-section__image" />
+      <blockquote class="ambassador-quote">
+        “For mig er det en del af et overordnet livsvalg at bidrage til cirkulær mode. Jeg elsker fællesskabet og de events, vi holder sammen.”
+        <footer>— Lotte, Medlem Roskilde</footer>
+      </blockquote>
+    </div>
+
+    <!-- EXPANDED state: product-card + benefits list -->
+    <div id="ambassadorExpanded" class="ambassador-expanded" hidden>
+      <!-- Product card -->
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <img src="/billeder/ambassador.webp" alt="Ambassadør ikon" />
+          <div>
+            <h4>Ambassadør</h4>
+            <span>0 kr/md</span>
+          </div>
+        </div>
+        <ul class="pricing-card__features">
+          <li>Inkluderer alt fra medlemskab</li>
+          <li>Early access til byttesalon</li>
+          <li>Gratis forplejning til events</li>
+          <li>Mulighed for medbestemmelse</li>
+          <li>Deltager til alle events i dit område</li>
+          <li>Producerer SOME-content</li>
+          <li>Inviterer nye medlemmer</li>
+          <li>Erfaring til dit CV</li>
+        </ul>
+        <a href="/tilmeld" class="pricing-card__button">Meld dig ind</a>
+      </div>
+
+      <!-- Benefits list -->
+      <div class="benefits">
+        <ol class="benefits-list">
+          <li>
+            <strong>Gratis adgang og early access til events</strong>
+            <div class="detail">Du får forrest i køen til vores byttesaloner og deltager gratis i events i dit område.</div>
+          </li>
+          <li>
+            <strong>Forplejning og forkælelse</strong>
+            <div class="detail">Når du hjælper til, sørger vi for mad, drikke og små overraskelser som tak.</div>
+          </li>
+          <li>
+            <strong>Indflydelse og medskabelse</strong>
+            <div class="detail">Du får mulighed for at præge vores events og være med til at forme fællesskabet.</div>
+          </li>
+          <li>
+            <strong>Fællesskab og erfaring</strong>
+            <div class="detail">Du bliver en del af et engageret team, får erfaring med events og SOME – og møder ligesindede.</div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is="inline">
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("ambassadorToggle");
+    const collapsed = document.getElementById("ambassadorCollapsed");
+    const expanded = document.getElementById("ambassadorExpanded");
+    if (!btn || !collapsed || !expanded) return;
+    btn.addEventListener("click", () => {
+      const now = collapsed.hidden;
+      collapsed.hidden = !now;
+      expanded.hidden = now;
+      btn.textContent = now ? "+" : "x";
+      btn.setAttribute("aria-label", now ? "Luk sektion" : "Åbn sektion");
+    });
+  });
+</script>
+
+<style>
+  /* wrapper */
+  .wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* header */
+  .ambassador-section__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .ambassador-section__title {
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+    padding-bottom: 0.25rem;
+    margin: 0;
+    color: #ec5a34;
+  }
+  .ambassador-section__toggle {
+    background: none;
+    border: none;
+    font-size: 1.75rem;
+    color: #ec5a34;
+    cursor: pointer;
+  }
+
+  /* collapsed */
+  .ambassador-collapsed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .ambassador-section__image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+  .ambassador-quote {
+    max-width: 600px;
+    font-style: italic;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .ambassador-quote footer {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* expanded: hide by default */
+  .ambassador-expanded[hidden] {
+    display: none;
+  }
+
+  /* EXPANDED: mobile-first single column */
+  .ambassador-expanded:not([hidden]) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  /* EXPANDED: desktop two-column */
+  @media (min-width: 1024px) {
+    .ambassador-expanded:not([hidden]) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* product-card */
+  .pricing-card {
+    background: #ec5a34;
+    color: #fff;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 440px;
+    min-width: 380px;
+    margin-bottom: 4rem;
+  }
+  .pricing-card__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .pricing-card__header h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .pricing-card__header span {
+    font-size: 1.5rem;
+  }
+  .pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  .pricing-card__features li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .pricing-card__button {
+    background: #fff;
+    color: #ec5a34;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    align-self: center;
+    margin-top: auto;
+  }
+
+  /* benefits list */
+  .benefits-list {
+    list-style: decimal inside;
+    margin: 0;
+    padding: 0;
+  }
+  .benefits-list li {
+    margin-bottom: 1.5rem;
+  }
+  .benefits-list li::marker {
+    color: #789080;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .benefits-list strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .detail {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #333;
+  }
+</style>

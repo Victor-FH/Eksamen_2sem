@@ -1,12 +1,8 @@
 ---
-import Events from "../components/Events.astro";
 import Faq from "../components/Faq.astro";
-import Footer from "../components/Footer.astro";
-import Guide from "../components/Guide.astro";
-import Hero from "../components/Hero.astro";
-import Kort from "../components/Kort.astro";
-import Plakat from "../components/Plakat.astro";
-import Video from "../components/Video.astro";
+import MedlemBanner from "../components/MedlemBanner.astro";
+import MembershipSection from "../components/MembershipSection.astro";
+import AmbassadorSection from "../components/AmbassadorSection.astro";
 import Layout from "../layouts/Layout.astro";
 import "../ccs/global.css";
 ---
@@ -14,6 +10,9 @@ import "../ccs/global.css";
 <html>
   <body>
     <Layout>
+      <MedlemBanner />
+      <MembershipSection />
+      <AmbassadorSection />
       <Faq />
     </Layout>
   </body>

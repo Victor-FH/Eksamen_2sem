@@ -1,0 +1,174 @@
+---
+
+---
+
+<section id="medlemskab" class="membership-section">
+  <div class="wrapper">
+    <h2 class="title">Medlemsskab</h2>
+    <p class="intro">Som medlem af Another Closet støtter du op om cirkulær mode – og får adgang til et stærkt fællesskab med events, byttesaloner og masser af inspiration.</p>
+
+    <div class="content">
+      <!-- Benefits list -->
+      <div class="benefits">
+        <ol>
+          <li>
+            <strong>Adgang til vores tøjbyttesaloner</strong>
+            <div class="detail">Du kan deltage i alle vores tøjbyttedage.</div>
+          </li>
+          <li>
+            <strong>Byt til 3 stykker tøj om måneden</strong>
+            <div class="detail">Du kan låne 3 nye stk tøj hver måned eller beholde det du i forvejen har lånt.</div>
+          </li>
+          <li>
+            <strong>Forsikring er inkluderet</strong>
+            <div class="detail">Skulle noget gå i stykker eller blive væk, er det dækket.</div>
+          </li>
+          <li>
+            <strong>Bliver tilknyttet et fællesskab</strong>
+            <div class="detail">Du bliver en del af et lokalt tø jfællesskab, hvor vi hjælper hinanden.</div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Pricing card -->
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <img src="/billeder/medlem.webp" alt="" />
+          <div>
+            <h4>Medlemsskab</h4>
+            <span>150 kr/md</span>
+          </div>
+        </div>
+        <ul class="pricing-card__features">
+          <li>Adgang til tøjbyttesaloner</li>
+          <li>Byt op til 3 stk. tøj</li>
+          <li>Forsikring inkluderet</li>
+          <li>Del af fællesskabet</li>
+          <li>Deltag når det passer</li>
+        </ul>
+        <a href="/tilmeld" class="pricing-card__button">Meld dig ind</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Container */
+  .membership-section {
+    padding: 4rem 0;
+  }
+  /* scales between 2rem and 4rem, never below 2rem on phones */
+  .membership-section .title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: #506e5c;
+  }
+
+  .wrapper {
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Title + intro */
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .intro {
+    text-align: center;
+    color: #4a5568;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Two-column grid on desktop */
+  .content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    justify-items: center; /* <— add this */
+  }
+
+  /* Benefits list styling */
+  .benefits ol {
+    list-style: decimal inside;
+    counter-reset: item;
+    margin: 0;
+    padding: 0;
+  }
+  .benefits li {
+    margin-bottom: 1.5rem;
+  }
+  .benefits li::marker {
+    color: #d47c3c;
+    font-size: 1.75rem;
+    font-weight: bold;
+  }
+  .benefits strong {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .detail {
+    font-size: 0.95rem;
+    color: #2d2d2d;
+  }
+
+  /* Pricing card */
+  .pricing-card {
+    background: #506e5c;
+    color: #fff;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
+    max-width: 440px;
+    min-width: 380px;
+  }
+  .pricing-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .pricing-card__header h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .pricing-card__header span {
+    display: block;
+    font-size: 1.5rem;
+  }
+  .pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  .pricing-card__features li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .pricing-card__button {
+    background: #fff;
+    color: #2f855a;
+    text-align: center;
+    padding: 0.75rem 4rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    align-self: center;
+    margin: 0 auto;
+  }
+  @media (min-width: 1024px) {
+    .content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
