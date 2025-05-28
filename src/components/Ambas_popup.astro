@@ -1,0 +1,162 @@
+
+<div id="ambas-popup" class="pop-up">
+  <div class="pop-up__box">
+    <button class="close">&times;</button>
+    <div class="images">
+      <img  src="/public/billeder/influencer.png" alt="Preview 1" />
+      <img class="hide" src="/public/billeder/pizza.png" alt="Preview 2" />
+      <img class="hide" src="/public/billeder/clothingrack.png" alt="Preview 3" />
+    </div>
+    <h2>Indsend ansøgning om at blive ambassadør</h2>
+    <form class="form">
+      <input type="text" placeholder="Fornavn" required />
+      <input type="text" placeholder="Efternavn" required />
+      <input type="email" placeholder="Email" required />
+       <textarea placeholder="Fortæl lidt om dig selv" required></textarea>
+      <button type="submit">Indsend</button>
+    </form>
+  </div>
+</div>
+
+<style>
+ .pop-up {
+  display: none;       /* hidden by default */
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  align-items: center;
+   background: rgba(0, 0, 0, 0.7); 
+  justify-content: center;
+  z-index: 999;
+}
+
+.pop-up.active {
+  display: flex;       /* only show when active */
+}
+  .pop-up__box {
+    position: relative;
+    background:  #f15a22;
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 90vw;
+    margin: 0 auto;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .close {
+    position: absolute;
+    top: 0.3rem; right: 0.1rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: rgba(65, 88, 64, 1);
+    cursor: pointer;
+  }
+
+  .images {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .images img {
+    width: 300px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .form input,
+  .form textarea,
+  .form button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .form input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    background: #ef9675;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+
+  .form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .form input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(12, 78, 47, 0.4);
+  }
+
+  .form textarea {
+    height: 150px;
+    padding: .5rem;
+    border: none;
+    border-radius: 4px;
+    background: #ef9675;
+    color: #fff;
+    font-size: .9rem;
+    line-height: 1.2;          /* make sure lines stack at top */
+    resize: vertical;          /* allow user to resize if desired */
+  }
+
+  .form textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+    text-align: left;          /* explicit, though default */
+  }
+
+  .form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(12,78,47,0.4);
+  }
+
+
+  .form button {
+    padding: 0.6rem;
+    border: none;
+    border-radius: 4px;
+    background: rgba(65, 88, 64, 1);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .form button:hover {
+    background: rgb(30, 41, 30);
+  }
+
+  .hide{
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .hide{
+        display: inline-block;
+    }
+  }
+</style>
+
+

@@ -1,15 +1,24 @@
 ---
 
 ---
-
+<div></div>
 <video autoplay muted loop playsinline class="forside-video">
   <source src="/public/videoer/Herocomputer.mp4" type="video/mp4" />
 </video>
+<div></div>
+
 <style>
+
+  div{
+    height: 50 px;
+    background-color: #fefde9;
+  }
   .forside-video {
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    z-index: -3;
+
   }
 </style>
