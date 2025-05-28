@@ -1,20 +1,46 @@
 ---
-import Events from "../components/Events.astro";
-import Faq from "../components/Faq.astro";
-import Footer from "../components/Footer.astro";
-import Guide from "../components/Guide.astro";
-import Hero from "../components/Hero.astro";
-import Kort from "../components/Kort.astro";
-import Plakat from "../components/Plakat.astro";
-import Video from "../components/Video.astro";
-import Layout from "../layouts/Layout.astro";
-import "../ccs/global.css";
 ---
 
-<html>
-  <body>
+import Layout from "../layouts/Layout.astro";
+import MedlemPopup from "../components/Medlem_popup.astro";
+import AmbasPopup from "../components/Ambas_popup.astro";
+
+---
+
+
     <Layout>
-      <Faq />
+        <button id="open-popup">Åbn Ambassadør popup</button>
+        <button id="open-medlem-popup">Åbn Medlem popup</button>
+
+        <MedlemPopup/>
+        <AmbasPopup/>
+
+        
+<script type="module" client:load>
+    // — AMBASSADØR POPUP —
+    const ambasPopup = document.getElementById("ambas-popup");           
+    const openAmbas  = document.getElementById('open-popup');
+    const closeAmbas = ambasPopup.querySelector('.close');
+
+    openAmbas.addEventListener('click',  () => ambasPopup.classList.add('active'));
+    closeAmbas.addEventListener('click', () => ambasPopup.classList.remove('active'));
+    ambasPopup.addEventListener('click', hit => {
+      if (hit.target === ambasPopup) ambasPopup.classList.remove('active');
+    });
+
+    // — MEDLEM POPUP —
+    const medlemPopup = document.getElementById('medlem-popup');
+    const openMedlem  = document.getElementById('open-medlem-popup');
+    const closeMedlem = medlemPopup.querySelector('.close');
+
+    openMedlem.addEventListener('click',  () => medlemPopup.classList.add('active'));
+    closeMedlem.addEventListener('click', () => medlemPopup.classList.remove('active'));
+    medlemPopup.addEventListener('click', hit => {
+      if (hit.target === medlemPopup) medlemPopup.classList.remove('active');
+    });
+  </script>
     </Layout>
-  </body>
-</html>
+ 
+
+
+
