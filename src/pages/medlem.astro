@@ -1,5 +1,4 @@
 ---
----
 
 import Layout from "../layouts/Layout.astro";
 import MedlemPopup from "../components/Medlem_popup.astro";
@@ -28,6 +27,11 @@ import AmbasPopup from "../components/Ambas_popup.astro";
       if (hit.target === ambasPopup) ambasPopup.classList.remove('active');
     });
 
+    const ambasSubmitBtn = document.querySelector("#ambas-popup button[type='submit']");
+
+    ambasSubmitBtn.addEventListener("click", () => {alert("Tak for din indsendelse! Vi vender tilbage snarest.");
+});
+
     // — MEDLEM POPUP —
     const medlemPopup = document.getElementById('medlem-popup');
     const openMedlem  = document.getElementById('open-medlem-popup');
@@ -38,6 +42,10 @@ import AmbasPopup from "../components/Ambas_popup.astro";
     medlemPopup.addEventListener('click', hit => {
       if (hit.target === medlemPopup) medlemPopup.classList.remove('active');
     });
+     const MedlemSubmitBtn = document.querySelector("#medlem-popup button[type='submit']");
+
+    MedlemSubmitBtn.addEventListener("click", () => {alert("Tak for din indsendelse! Vi vender tilbage snarest.");
+});
   </script>
     </Layout>
  
