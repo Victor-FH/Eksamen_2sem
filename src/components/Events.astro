@@ -1,10 +1,23 @@
 ---
-const SUPA_URL = "https://bwzlyynicfdhqxvfotfg.supabase.co/rest/v1/begivenheder";
-const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emx5eW5pY2ZkaHF4dmZvdGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzMjk5NjUsImV4cCI6MjA2MzkwNTk2NX0.iWIvQ6JD4u7LRTB0dUL8CuJFoys5U8sWInPGsV-kdjM";
+const SUPA_URL =
+  "https://bwzlyynicfdhqxvfotfg.supabase.co/rest/v1/begivenheder";
+const SUPA_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emx5eW5pY2ZkaHF4dmZvdGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzMjk5NjUsImV4cCI6MjA2MzkwNTk2NX0.iWIvQ6JD4u7LRTB0dUL8CuJFoys5U8sWInPGsV-kdjM";
 
 // build a URL that selects all needed cols, orders by index_by, limits to 4
 const url = new URL(SUPA_URL);
-url.searchParams.set("select", ["by", "dato", "tid1", "info1", "lille_billede", "begivenhed_info", "index_by"].join(","));
+url.searchParams.set(
+  "select",
+  [
+    "by",
+    "dato",
+    "tid1",
+    "info1",
+    "lille_billede",
+    "begivenhed_info",
+    "index_by",
+  ].join(",")
+);
 url.searchParams.set("order", "index_by.asc.nullslast");
 url.searchParams.set("limit", "4");
 
@@ -20,43 +33,51 @@ if (!res.ok) {
   throw new Error(`Supabase error ${res.status}: ${await res.text()}`);
 }
 
-const events = await res.json(); // already sorted & capped at 4
+const events = await res.json();
 ---
 
 <section>
   <div class="event-wrapper">
-    <!-- Images column -->
-    <div class="image-column">
-      {
-        events.map((ev) => {
-          let src = ev.lille_billede ? (ev.lille_billede.startsWith("http") ? ev.lille_billede : `/billeder/${ev.lille_billede}`) : null;
-          return src ? <img class="event-image" src={src} alt={`Plakat for ${ev.by}`} /> : <div class="image-placeholder" />;
-        })
-      }
-    </div>
+    {
+      events.map((ev) => {
+        const src = ev.lille_billede
+          ? ev.lille_billede.startsWith("http")
+            ? ev.lille_billede
+            : `/billeder/${ev.lille_billede}`
+          : null;
 
-    <!-- Details column -->
-    <div class="event-column">
-      {
-        events.map((ev) => (
+        return (
           <div class="event" key={ev.index_by}>
-            <div class="event-date">
-              <div class="event-date-inner">
-                <h3>{ev.dato}</h3>
-                <p>{ev.tid1}</p>
-              </div>
+            <div class="event-image-wrapper">
+              {src ? (
+                <img
+                  class="event-image"
+                  src={src}
+                  alt={`Plakat for ${ev.by}`}
+                />
+              ) : (
+                <div class="image-placeholder" />
+              )}
             </div>
-            <div class="event-details">
-              <div class="details-text">
-                <div class="event-location">{ev.index_by}</div>
-                <div class="details">{ev.begivenhed_info}</div>
+            <div class="event-content">
+              <div class="event-date">
+                <div class="event-date-inner">
+                  <h3>{ev.dato}</h3>
+                  <p>{ev.tid1}</p>
+                </div>
               </div>
-              <button class="signup-button">Tilmeld dig</button>
+              <div class="event-details">
+                <div class="details-text">
+                  <div class="event-location">{ev.index_by}</div>
+                  <div class="details">{ev.begivenhed_info}</div>
+                </div>
+                <button class="signup-button">Tilmeld dig</button>
+              </div>
             </div>
           </div>
-        ))
-      }
-    </div>
+        );
+      })
+    }
   </div>
 </section>
 
@@ -69,82 +90,185 @@ const events = await res.json(); // already sorted & capped at 4
   .event-wrapper {
     padding: 4rem;
     margin: auto;
-    font-family: serif;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    column-gap: 2rem;
-    row-gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
-  .image-column,
-  .event-column {
-    display: grid;
-    row-gap: 1.5rem;
-  }
-  .event-image {
-    width: 100%;
-    object-fit: cover;
-  }
-  .image-placeholder {
-    width: 100%;
-    aspect-ratio: 4/3;
-    background: #e0e0e0;
-  }
+
   .event {
     display: grid;
-    grid-template-columns: 130px 1fr;
-    align-items: center;
-    position: relative;
-    border-bottom: 1px solid #ccc;
-    padding: 1rem 0;
-  }
-  .event:not(:last-child) {
+    grid-template-columns: 160px 1fr; /* image and content */
+    gap: 2rem;
     border-bottom: 1px solid #ccc;
   }
+
   .event:first-child {
     border-top: 1px solid #ccc;
   }
-  .event-date-inner {
-    font-weight: bold;
+
+  .event-image-wrapper {
+    width: 160px;
+    height: 120px;
+    overflow: hidden;
   }
+
+  .event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .event-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    height: 100%;
+  }
+
+  .event-date {
+    flex: 0 0 140px;
+    align-content: center;
+  }
+
   .event-date-inner h3 {
     margin: 0;
-    font-size: 1.25rem;
   }
+
   .event-date-inner p {
     margin: 0.25rem 0 0;
     font-size: 1rem;
     color: #555;
   }
+
+  .event-details {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .details-text {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-    margin-left: 2rem;
+    justify-content: center; /* optional: vertical centering */
   }
+
   .event-location {
-    margin: 0;
     font-weight: bold;
     font-size: 1.5rem;
   }
+
   .details {
-    margin: 0;
     font-size: 1.2rem;
     color: #333;
     max-inline-size: clamp(30ch, 50vw, 60ch);
     overflow-wrap: break-word;
   }
+
   .signup-button {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
     background-color: #ec5a34;
     color: white;
-    padding: 0.6rem 1.2rem;
+    padding: 0.8rem 1rem;
     border: none;
-    border-radius: 0.4rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
     font-weight: bold;
-    font-size: 1rem;
     cursor: pointer;
+    transition:
+      transform 0.15s ease-out,
+      box-shadow 0.15s ease-out;
+    white-space: nowrap;
+  }
+
+  .signup-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  /* @media (max-width: 768px) {
+    .event {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+    }
+
+    .event-image-wrapper {
+      width: 100%;
+      height: auto;
+    }
+
+    .event-content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .event-date,
+    .event-details {
+      flex: unset;
+      width: 100%;
+    }
+
+    .event-date {
+      text-align: left;
+    }
+
+    .event-details {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .signup-button {
+      align-self: stretch;
+      text-align: center;
+    }
+
+    .event-wrapper {
+      padding: 2rem;
+    }
+  } */
+
+  @media (max-width: 768px) {
+    .event-wrapper {
+      padding: 2rem 0;
+    }
+
+    .event {
+      grid-template-columns: 120px 1fr;
+      gap: 0.5rem;
+    }
+
+    .event-image-wrapper {
+      width: 120px;
+      height: 90px;
+    }
+
+    .event-content {
+      gap: 0.3rem;
+    }
+
+    .event-date {
+      flex: 0 0 100px;
+      font-size: 0.7rem;
+    }
+
+    .event-location {
+      font-size: 1rem;
+    }
+
+    .event-details {
+      gap: 0;
+    }
+
+    .details {
+      font-size: 0.7rem;
+    }
+
+    .signup-button {
+      font-size: 1rem;
+      padding: 0.6rem 0.8rem;
+    }
   }
 </style>
