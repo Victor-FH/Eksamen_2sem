@@ -2,8 +2,7 @@
 const { event } = Astro.props;
 
 const url = "https://bwzlyynicfdhqxvfotfg.supabase.co/rest/v1/begivenheder";
-const key =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emx5eW5pY2ZkaHF4dmZvdGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzMjk5NjUsImV4cCI6MjA2MzkwNTk2NX0.iWIvQ6JD4u7LRTB0dUL8CuJFoys5U8sWInPGsV-kdjM";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emx5eW5pY2ZkaHF4dmZvdGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzMjk5NjUsImV4cCI6MjA2MzkwNTk2NX0.iWIvQ6JD4u7LRTB0dUL8CuJFoys5U8sWInPGsV-kdjM";
 const options = {
   headers: {
     apikey: key,
@@ -16,7 +15,7 @@ const data = await response.json();
 
 <a href={"event/" + event.id}>
   <article>
-    <img src={"billeder/" + event.lille_billede} alt={} />
+    <!-- <img src={"billeder/" + event.lille_billede} alt={} /> -->
     <p>{event.index_by}</p>
     <p>{event.dato}</p>
     <p>{event.begivenhed_info}</p>
