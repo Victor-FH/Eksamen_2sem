@@ -1,0 +1,19 @@
+---
+// src/pages/[by].astro
+import Layout from "../layouts/Layout.astro";
+import EventDetails from "../components/EventDetails.astro";
+
+export async function getStaticPaths() {
+  const cities = ["Nørrebro", "Lyngby", "Fredericia", "Ribe", "Roskilde", "Ringkøbing"];
+
+  return cities.map((by) => ({
+    params: { by },
+  }));
+}
+
+const { by } = Astro.params;
+---
+
+<Layout>
+  <EventDetails city={by} />
+</Layout>
