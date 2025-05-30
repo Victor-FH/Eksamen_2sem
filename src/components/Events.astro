@@ -2,7 +2,12 @@
 const SUPA_URL = "https://bwzlyynicfdhqxvfotfg.supabase.co/rest/v1/begivenheder";
 const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emx5eW5pY2ZkaHF4dmZvdGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzMjk5NjUsImV4cCI6MjA2MzkwNTk2NX0.iWIvQ6JD4u7LRTB0dUL8CuJFoys5U8sWInPGsV-kdjM";
 
-const url = `${SUPA_URL}?select=by,dato,tid1,info1,lille_billede`;
+// build a URL that selects all needed cols, orders by index_by, limits to 4
+const url = new URL(SUPA_URL);
+url.searchParams.set("select", ["by", "dato", "tid1", "info1", "lille_billede", "begivenhed_info", "index_by"].join(","));
+url.searchParams.set("order", "index_by.asc.nullslast");
+url.searchParams.set("limit", "4");
+
 const options = {
   headers: {
     apikey: SUPA_KEY,
@@ -10,16 +15,12 @@ const options = {
   },
 };
 
-const res = await fetch(url, options);
+const res = await fetch(url.toString(), options);
 if (!res.ok) {
   throw new Error(`Supabase error ${res.status}: ${await res.text()}`);
 }
 
-// Parse JSON
-const payload = await res.json();
-const eventsArray = Array.isArray(payload) ? payload : [];
-// Take up to the first 4
-const events = eventsArray.slice(0, 4);
+const events = await res.json(); // already sorted & capped at 4
 ---
 
 <section>
@@ -28,11 +29,7 @@ const events = eventsArray.slice(0, 4);
     <div class="image-column">
       {
         events.map((ev) => {
-          // compute a safe src if there's an image
-          let src = null;
-          if (ev.lille_billede) {
-            src = ev.lille_billede.startsWith("http") ? ev.lille_billede : `/billeder/${ev.lille_billede}`;
-          }
+          let src = ev.lille_billede ? (ev.lille_billede.startsWith("http") ? ev.lille_billede : `/billeder/${ev.lille_billede}`) : null;
           return src ? <img class="event-image" src={src} alt={`Plakat for ${ev.by}`} /> : <div class="image-placeholder" />;
         })
       }
@@ -42,20 +39,17 @@ const events = eventsArray.slice(0, 4);
     <div class="event-column">
       {
         events.map((ev) => (
-          <div class="event">
+          <div class="event" key={ev.index_by}>
             <div class="event-date">
               <div class="event-date-inner">
-                <>
-                  <h3>{ev.dato}</h3>
-                  <br />
-                </>
+                <h3>{ev.dato}</h3>
                 <p>{ev.tid1}</p>
               </div>
             </div>
             <div class="event-details">
               <div class="details-text">
-                <div class="event-location">{ev.by}</div>
-                <div class="details">{ev.info1}</div>
+                <div class="event-location">{ev.index_by}</div>
+                <div class="details">{ev.begivenhed_info}</div>
               </div>
               <button class="signup-button">Tilmeld dig</button>
             </div>
@@ -76,34 +70,25 @@ const events = eventsArray.slice(0, 4);
     padding: 4rem;
     margin: auto;
     font-family: serif;
-    /* switch to CSS grid with two columns: images / details */
     display: grid;
     grid-template-columns: 120px 1fr;
     column-gap: 2rem;
     row-gap: 2rem;
   }
-
-  /* both columns are simple vertical grids */
   .image-column,
   .event-column {
     display: grid;
     row-gap: 1.5rem;
   }
-
-  /* images (or placeholders) fill their column */
   .event-image {
     width: 100%;
     object-fit: cover;
   }
-
   .image-placeholder {
     width: 100%;
     aspect-ratio: 4/3;
     background: #e0e0e0;
-    height: auto;
   }
-
-  /* each event row is itself a 2-col grid: date / text+button */
   .event {
     display: grid;
     grid-template-columns: 130px 1fr;
@@ -112,17 +97,12 @@ const events = eventsArray.slice(0, 4);
     border-bottom: 1px solid #ccc;
     padding: 1rem 0;
   }
-
-  /* draw a divider under every row except the last */
   .event:not(:last-child) {
     border-bottom: 1px solid #ccc;
-    padding-bottom: 1rem;
   }
   .event:first-child {
     border-top: 1px solid #ccc;
   }
-
-  /* Date styling */
   .event-date-inner {
     font-weight: bold;
   }
@@ -135,8 +115,6 @@ const events = eventsArray.slice(0, 4);
     font-size: 1rem;
     color: #555;
   }
-
-  /* Text block styling */
   .details-text {
     display: flex;
     flex-direction: column;
@@ -155,8 +133,6 @@ const events = eventsArray.slice(0, 4);
     max-inline-size: clamp(30ch, 50vw, 60ch);
     overflow-wrap: break-word;
   }
-
-  /* Button aligned right, vertically centered */
   .signup-button {
     position: absolute;
     right: 0;
