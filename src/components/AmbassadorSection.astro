@@ -12,7 +12,8 @@
 
     <!-- COLLAPSED state: image + quote -->
     <div id="ambassadorCollapsed" class="ambassador-collapsed">
-      <img src="/images/ambassador-lotte.jpg" alt="Lotte, Ambassadør" class="ambassador-section__image" />
+      <video src="/videoer/interviewambassa.mp4" class="ambassador-section__image" playsinline controls aria-label="Lotte, Ambassadør video"></video>
+
       <blockquote class="ambassador-quote">
         “For mig er det en del af et overordnet livsvalg at bidrage til cirkulær mode. Jeg elsker fællesskabet og de events, vi holder sammen.”
         <footer>— Lotte, Medlem Roskilde</footer>
@@ -40,7 +41,7 @@
           <li>Inviterer nye medlemmer</li>
           <li>Erfaring til dit CV</li>
         </ul>
-        <button id="amb-pricing-card__button">Meld dig ind</button>
+        <button id="open-popup">Meld dig ind</button>
       </div>
 
       <!-- Benefits list -->
@@ -87,7 +88,7 @@
 <style>
   /* wrapper */
   .wrapper {
-    max-width: 1000px;
+    max-width: 80%;
     margin: 0 auto;
     padding: 0 1rem;
   }
@@ -115,18 +116,22 @@
     cursor: pointer;
   }
 
-  /* collapsed */
+  /* COLLAPSED (mobile-first): stacked video above quote */
   .ambassador-collapsed {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    margin: 2rem 0;
   }
   .ambassador-section__image {
     width: 100%;
     max-width: 300px;
+    aspect-ratio: 9 / 16;
     border-radius: 0.5rem;
     object-fit: cover;
+    background: #000;
+    margin: 1rem 0; /* add top and bottom margin */
   }
   .ambassador-quote {
     max-width: 600px;
@@ -154,13 +159,13 @@
   }
 
   /* EXPANDED: desktop two-column */
-  @media (min-width: 1024px) {
+  @media (min-width: 724px) {
     .ambassador-expanded:not([hidden]) {
       grid-template-columns: 1fr 1fr;
     }
   }
 
-  /* product-card */
+  /* PRODUCT-CARD */
   .pricing-card {
     background: #ec5a34;
     color: #fff;
@@ -171,8 +176,9 @@
     justify-content: space-between;
     margin: 0 auto;
     text-align: center;
-    max-width: 440px;
-    min-width: 380px;
+    width: 100%;
+    max-width: 80%;
+
     margin-bottom: 4rem;
   }
   .pricing-card__header {
@@ -199,10 +205,10 @@
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
   }
-  #amb-pricing-card__button {
+  #open-popup {
     background: #fff;
     color: #ec5a34;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 4rem;
     cursor: pointer;
     border: none;
     border-radius: 0.5rem;
@@ -212,7 +218,7 @@
     margin-top: auto;
   }
 
-  /* benefits list */
+  /* BENEFITS LIST */
   .benefits-list {
     list-style: decimal inside;
     margin: 0;
@@ -222,7 +228,7 @@
     margin-bottom: 1.5rem;
   }
   .benefits-list li::marker {
-    color: #789080;
+    color: #506e5c;
     font-size: 1.25rem;
     font-weight: bold;
   }
@@ -234,5 +240,35 @@
     font-size: 0.95rem;
     line-height: 1.4;
     color: #333;
+  }
+
+  /* DESKTOP (>=724px): video left, quote right, larger video */
+  @media (min-width: 724px) {
+    .ambassador-collapsed {
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .wrapper {
+      max-width: 80%;
+    }
+    .ambassador-section__image {
+      width: 250px; /* larger on desktop */
+      max-width: none; /* allow fixed width */
+      aspect-ratio: 9 / 16;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      background: #000;
+      margin: 1rem 0; /* maintain vertical spacing */
+    }
+    .ambassador-quote {
+      flex: 1;
+      max-width: 600px;
+      font-style: italic;
+      line-height: 1.5;
+      text-align: left;
+      align-self: center;
+    }
   }
 </style>

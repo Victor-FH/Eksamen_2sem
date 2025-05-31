@@ -6,50 +6,49 @@ import AmbassadorSection from "../components/AmbassadorSection.astro";
 import Layout from "../layouts/Layout.astro";
 import MedlemPopup from "../components/Medlem_popup.astro";
 import AmbasPopup from "../components/Ambas_popup.astro";
+import "../ccs/global.css";
 ---
 
+<Layout>
+  <MedlemBanner />
+  <MembershipSection />
+  <AmbassadorSection />
+  <Faq />
+  <MedlemPopup />
+  <AmbasPopup />
 
-    <Layout>
-      <MedlemBanner />
-      <MembershipSection />
-      <AmbassadorSection />
-      <Faq />
-        <MedlemPopup/>
-        <AmbasPopup/>
-<script type="module" client:load>
+  <script client:load>
     // — AMBASSADØR POPUP —
-    const ambasPopup = document.getElementById("ambas-popup");           
-    const openAmbas  = document.getElementById('amb-pricing-card__button');
-    const closeAmbas = ambasPopup.querySelector('.close');
+    const ambasPopup = document.getElementById("ambas-popup");
+    const openAmbas = document.getElementById("open-popup");
+    const closeAmbas = ambasPopup.querySelector(".close");
 
-    openAmbas.addEventListener('click',  () => ambasPopup.classList.add('active'));
-    closeAmbas.addEventListener('click', () => ambasPopup.classList.remove('active'));
-    ambasPopup.addEventListener('click', hit => {
-      if (hit.target === ambasPopup) ambasPopup.classList.remove('active');
+    openAmbas.addEventListener("click", () => ambasPopup.classList.add("active"));
+    closeAmbas.addEventListener("click", () => ambasPopup.classList.remove("active"));
+    ambasPopup.addEventListener("click", (hit) => {
+      if (hit.target === ambasPopup) ambasPopup.classList.remove("active");
     });
 
     const ambasSubmitBtn = document.querySelector("#ambas-popup button[type='submit']");
 
-    ambasSubmitBtn.addEventListener("click", () => {alert("Tak for din indsendelse! Vi vender tilbage snarest.");
-});
+    ambasSubmitBtn.addEventListener("click", () => {
+      alert("Tak for din indsendelse! Vi vender tilbage snarest.");
+    });
 
     // — MEDLEM POPUP —
-    const medlemPopup = document.getElementById('medlem-popup');
-    const openMedlem  = document.getElementById('pricing-card__button');
-    const closeMedlem = medlemPopup.querySelector('.close');
+    const medlemPopup = document.getElementById("medlem-popup");
+    const openMedlem = document.getElementById("open-medlem-popup");
+    const closeMedlem = medlemPopup.querySelector(".close");
 
-    openMedlem.addEventListener('click',  () => medlemPopup.classList.add('active'));
-    closeMedlem.addEventListener('click', () => medlemPopup.classList.remove('active'));
-    medlemPopup.addEventListener('click', hit => {
-      if (hit.target === medlemPopup) medlemPopup.classList.remove('active');
+    openMedlem.addEventListener("click", () => medlemPopup.classList.add("active"));
+    closeMedlem.addEventListener("click", () => medlemPopup.classList.remove("active"));
+    medlemPopup.addEventListener("click", (hit) => {
+      if (hit.target === medlemPopup) medlemPopup.classList.remove("active");
     });
-     const MedlemSubmitBtn = document.querySelector("#medlem-popup button[type='submit']");
+    const MedlemSubmitBtn = document.querySelector("#medlem-popup button[type='submit']");
 
-    MedlemSubmitBtn.addEventListener("click", () => {alert("Tak for din indsendelse! Vi vender tilbage snarest.");
-});
+    MedlemSubmitBtn.addEventListener("click", () => {
+      alert("Tak for din indsendelse! Vi vender tilbage snarest.");
+    });
   </script>
-    </Layout>
- 
-
-
-
+</Layout>

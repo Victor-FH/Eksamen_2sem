@@ -18,6 +18,11 @@
   body {
     background-color: #fef9e9;
   }
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 4rem);
+    color: #ec5a34;
+    font-family: "Oregon LDO DemiBold", sans-serif;
+  }
   .medlem-banner {
     position: relative;
     overflow: visible; /* allow the intro to flow outside */
@@ -30,17 +35,11 @@
   }
 
   .medlem-banner__intro {
-    position: absolute;
-    left: 50%;
-    bottom: -2rem; /* only pull it down 2rem, not 10rem */
-    transform: translateX(-50%);
-    width: calc(100% - 2rem); /* span almost the full width, with a little margin */ /* match your container width */
-    background: #fef9e9; /* your pale-yellow */
     padding: 2rem;
-    border-radius: 5rem 5rem 0 0; /* only top corners round */
     text-align: center;
     font-size: clamp(0.8rem, 1.25vw, 1.2rem);
   }
+
   .medlem-banner__intro p {
     max-width: 50ch;
     margin: 0 auto;
@@ -49,6 +48,18 @@
   }
 
   @media (min-width: 768px) {
+    .medlem-banner__image {
+      height: 500px; /* pick a height that looks good—e.g. 400px */
+      overflow: hidden;
+    }
+
+    /* 2) Make the <img> fill that container, cropping at the bottom */
+    .medlem-banner__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* cover entire box */
+      object-position: top; /* align to top so bottom gets cropped */
+    }
     .medlem-banner__text {
       text-align: center;
       margin-top: 1.5rem;
@@ -62,6 +73,9 @@
     }
     .medlem-banner__intro p {
       max-width: 80ch;
+    }
+    h2 {
+      font-size: 3rem;
     }
   }
 </style>
