@@ -6,9 +6,7 @@ const mobileImage = "/billeder/mobilherobilleder.webp";
 <section class="hero">
   <div class="scroll-container">
     <picture>
-      <!-- Desktop when ≥768px -->
       <source media="(min-width: 768px)" srcset={desktopImage} />
-      <!-- Mobile-first fallback -->
       <img src={mobileImage} alt="Tøjdele collage" class="hero-image" loading="lazy" />
     </picture>
   </div>
@@ -21,7 +19,6 @@ const mobileImage = "/billeder/mobilherobilleder.webp";
 </section>
 
 <style>
-  /* — mobile-first — */
 
   .hero {
     height: 95%;
@@ -61,12 +58,13 @@ const mobileImage = "/billeder/mobilherobilleder.webp";
   .hero-content h1 {
     margin: 0;
     color: #ec5a34;
+    font-family: "Optima", sans-serif;
     font-size: clamp(3rem, 4vw, 4rem);
     white-space: nowrap;
   }
   .hero-content h2 {
     margin: 0.5rem 0 2rem;
-
+    font-family: monospace;
     font-size: clamp(0.75rem, 4vw, 1.2rem);
     color: #000;
     white-space: nowrap;
@@ -90,9 +88,9 @@ const mobileImage = "/billeder/mobilherobilleder.webp";
     border-color: #d35400;
   }
 
-  .cta a {
+  .cta a{
     text-decoration: none;
-    color: #ec5a34;
+    color:#ec5a34;
   }
 
   /* — scale up for desktop — */
