@@ -71,100 +71,211 @@ const slots = [1, 2, 3]
   </section>
 
   <style>
+    /* ─── GLOBAL BOX-SIZING ─── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    /* ─── MOBILE-FIRST BASE STYLES ─── */
     .event-container {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      margin: 0;
+      padding: 0;
       background-color: #fef9e9;
     }
+
+    /* Hide poster on narrow screens */
     .plakat {
       display: none;
     }
-    .plakat img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+
+    /* Event content fills full width on mobile */
     .event {
-      background: #fef9e9;
+      width: 100%;
       padding: 2rem 1rem;
-      max-width: 1800px;
       color: #333;
     }
+
     h1 {
-      font-size: 2.4rem;
+      font-size: clamp(2rem, 3vw, 3rem);
       font-weight: bold;
-      margin-bottom: -1rem;
-      margin-top: 0;
+      margin: 0 0 1rem 0;
+      line-height: 1.2;
     }
     .highlight {
       color: #ec5a34;
     }
+
     .event-dato {
+      font-size: clamp(1rem, 2vw, 1.5rem);
       text-transform: uppercase;
       font-weight: bold;
-      margin-bottom: 1rem;
+      margin: 0 0 1rem 0;
     }
+
     .event-lokation h2 {
-      margin-bottom: -20px;
-      font-size: 30px;
+      margin: 0 0 0.5rem 0;
+      font-size: clamp(1rem, 35vw, 2rem);
     }
+    .event-lokation p {
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: #555;
+    }
+
     .event-tidspunkt {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.75rem;
+      margin: 1rem 0;
     }
     .event-tidspunkt h3 {
-      margin-bottom: -10px;
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
       color: #ec5a34;
     }
+    .event-tidspunkt p {
+      margin: 0;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: #333;
+    }
+
     .tilmelding {
-      margin-top: 2rem;
+      margin: 2rem 0 0 0;
       text-align: center;
     }
+    .tilmelding h2 {
+      margin: 0 0 1rem 0;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+    }
+
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      margin-top: 1rem;
+      width: 100%;
     }
-    input {
+    form input {
       width: 90%;
       max-width: 900px;
       padding: 1rem;
-      border: none;
+      border: 1px solid #ccc;
       border-radius: 10px;
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2vw, 1rem);
     }
-    button {
-      max-width: 150px;
+    form button {
       width: 90%;
+      max-width: 150px;
       background-color: #ec5a34;
-      color: white;
+      color: #fff;
       padding: 1rem;
       border: none;
       border-radius: 10px;
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
       font-weight: bold;
       cursor: pointer;
+      transition:
+        transform 0.15s ease-out,
+        box-shadow 0.15s ease-out;
     }
-    button:hover {
+    form button:hover {
       transform: translateY(-2px) scale(1.05);
-      box-shadow: #333;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
 
+    /* ─── DESKTOP LAYOUT (≥768px) ─── */
     @media (min-width: 768px) {
+      /* Ensure the container remains two columns */
       .event-container {
         flex-direction: row;
-        height: 100vh;
+        align-items: stretch;
+        width: 100%;
+        height: auto;
       }
+
+      /* Poster stays 50% unchanged */
       .plakat {
         display: block;
-        width: 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+        overflow: hidden;
       }
+      .plakat img {
+        width: 100%;
+        height: 100%;
+        object-fit: fit; /* fill container and crop overflow */
+        object-position: top; /* anchor the image at the top, so bottom gets cropped */
+        display: block;
+      }
+
+      /* Right side: scale down everything */
       .event {
-        width: 50%;
-        padding: 4rem;
+        flex: 0 0 50%;
+        max-width: 50%;
+        /* reduce padding around content */
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      /* Headline smaller */
+      .event h1 {
+        font-size: clamp(1.8rem, 2vw, 2.4rem);
+        margin-bottom: 1rem;
+      }
+
+      /* Date smaller */
+      .event .event-dato {
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+        margin-bottom: 1rem;
+      }
+
+      /* Location heading smaller */
+      .event .event-lokation h2 {
+        font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+        margin-bottom: 0.5rem;
+      }
+      .event .event-lokation p {
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+        margin-bottom: 1rem;
+      }
+
+      /* Program slots slightly tighter */
+      .event .event-tidspunkt {
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+      }
+      .event .event-tidspunkt h3 {
+        font-size: clamp(1rem, 1.5vw, 1.1rem);
+        margin-bottom: 0.25rem;
+      }
+      .event .event-tidspunkt p {
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+      }
+
+      /* “Meld dig til” heading smaller */
+      .event .tilmelding h2 {
+        font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+        margin-bottom: 1rem;
+      }
+
+      /* Form inputs narrower and smaller text */
+      .event form input {
+        max-width: 600px;
+        padding: 0.8rem;
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+      }
+      /* Button smaller */
+      .event form button {
+        max-width: 150px;
+        padding: 0.8rem 1.5rem;
+        font-size: clamp(1rem, 1.2vw, 1.1rem);
       }
     }
   </style>
