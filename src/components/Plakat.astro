@@ -1,10 +1,10 @@
 <section>
   <img class="line" src="/billeder/plakater/line.png" alt="" />
   <div class="posters">
-    <img src="/billeder/plakater/plakat1.webp" alt="plakat1" />
-    <img src="/billeder/plakater/plakat2.webp" alt="plakat2" />
-    <img class="hide" src="/billeder/plakater/plakat3.webp" alt="plakat3" />
-    <img class="hide" src="/billeder/plakater/plakat4.webp" alt="plakat4" />
+    <a href="/Nørrebro"><img src="/billeder/plakater/plakat1.webp" alt="Nørrebroplakat" /></a>
+    <a href="/Ribe"><img src="/billeder/plakater/plakat2.webp" alt="Ribeplakat" /></a>
+    <a href="/Fredericia" class="hide"><img src="/billeder/plakater/plakat3.webp" alt="Fredericiaplakat" /></a>
+    <a href="/Roskilde" class="hide"><img src="/billeder/plakater/plakat4.webp" alt="Roskildeplakat" /></a>
   </div>
 </section>
 
@@ -21,33 +21,34 @@
   }
 
   .posters {
-    position: relative;
     display: flex;
-    justify-content: space-evenly;
-    margin: 2rem auto 5rem;
-    top: -4rem;
+    justify-content: center;
+
+    gap: 3rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    top: -1.7rem;
+    position: relative;
   }
+
+  .posters img {
+    width: clamp(8rem, 15vw, 12.5rem); /* min: 8rem (128px), max: 12.5rem (200px) */
+    height: auto;
+    transition: transform 0.2s ease;
+  }
+
   .posters img:hover {
-    /* scale up slightly */
     transform: scale(1.25);
-    z-index: 3; /* bring hovered poster above its neighbors */
+    z-index: 3;
   }
 
   .hide {
     display: none;
   }
-  /* Mobile-first default (applies everywhere unless overridden) */
-  .posters img {
-    width: 30%; /* or whatever mobile size you want */
-    height: auto;
-  }
+
   @media (min-width: 768px) {
     .hide {
       display: inline-block;
-    }
-
-    .posters img {
-      width: 12%; /* only posters shrink to 12% on desktop */
     }
   }
 </style>
