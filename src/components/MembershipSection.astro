@@ -46,7 +46,7 @@
           <li>Del af fællesskabet</li>
           <li>Deltag når det passer</li>
         </ul>
-        <button id="pricing-card__button">Meld dig ind</button>
+        <button id="open-medlem-popup">Meld dig ind</button>
       </div>
     </div>
   </div>
@@ -78,7 +78,6 @@
   }
   .intro {
     text-align: center;
-    color: #4a5568;
     margin-bottom: 2.5rem;
   }
 
@@ -101,7 +100,7 @@
     margin-bottom: 1.5rem;
   }
   .benefits li::marker {
-    color: #d47c3c;
+    color: #ec5a34;
     font-size: 1.75rem;
     font-weight: bold;
   }
@@ -126,8 +125,8 @@
     justify-content: space-between;
     justify-content: center;
     text-align: center;
-    max-width: 440px;
-    min-width: 380px;
+    width: 100%;
+    max-width: 80%;
   }
   .pricing-card__header {
     display: flex;
@@ -155,20 +154,20 @@
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
   }
-  #pricing-card__button {
+  #open-medlem-popup {
     background: #fff;
     color: #2f855a;
     text-align: center;
     padding: 0.75rem 4rem;
     border: none;
     border-radius: 0.5rem;
-    cursor:pointer;
+    cursor: pointer;
     text-decoration: none;
     font-weight: 600;
     align-self: center;
     margin: 0 auto;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 724px) {
     .content {
       grid-template-columns: 1fr 1fr;
     }
