@@ -10,6 +10,9 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   background-color: #fefde9;
 }
+h1 {
+  font-family: "Oregon LDO DemiBold", sans-serif;
+}
 h2 {
   font-family: "Oregon LDO", sans-serif;
 }
