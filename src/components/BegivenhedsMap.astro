@@ -10,31 +10,31 @@ import PinIcon from "/public/billeder/pin.png";
     <div class="map-wrapper">
       <img src={MapImage.src} alt="Kort over Danmark med eventsteder" class="map" />
 
-      <a href="/src/pages/singleview.astro" class="marker" style="top: 60%; left: 77.5%;">
+      <a href="/Roskilde" class="marker" style="top: 60%; left: 77.5%;">
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img src="/billeder/PinHover-Roskilde.png" alt="Hover Marker" class="marker-hover" />
       </a>
-      <a href="/src/pages/singleview.astro" class="marker" style="top: 60%; left: 85%;">
+      <!-- <a href="/" class="marker" style="top: 60%; left: 85%;">
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img src="/billeder/PinHover-AAU.png" alt="Hover Marker" class="marker-hover" />
-      </a>
-      <a href="/src/pages/singleview.astro" class="marker" style="top: 46%; left: 18%;">
+      </a> -->
+      <a href="/Ringkøbing" class="marker" style="top: 46%; left: 18%;">
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img src="/billeder/PinHover-Ringkobing.png" alt="Hover Marker" class="marker-hover" />
       </a>
-      <a href="/src/pages/singleview.astro" class="marker" style="top: 69%; left: 25%;">
+      <a href="/Ribe" class="marker" style="top: 69%; left: 25%;">
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img src="/billeder/PinHover-Ribe.png" alt="Hover Marker" class="marker-hover" />
       </a>
-      <a href="/src/pages/singleview.astro" class="marker" style="top: 59%; left: 83%;">
+      <a href="/Nørrebro" class="marker" style="top: 59%; left: 83%;">
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img src="/billeder/PinHover-Norrebro.png" alt="Hover Marker" class="marker-hover" />
       </a>
-      <a href="/src/pages/singleview.astro" class="marker" style="top: 57%; left: 85%;">
+      <a href="Lyngby/" class="marker" style="top: 57%; left: 85%;">
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img src="/billeder/PinHover-Lyngby.png" alt="Hover Marker" class="marker-hover" />
       </a>
-      <a href="/src/pages/singleview.astro" class="marker" style="top: 62%; left: 40%;">
+      <a href="/Fredericia" class="marker" style="top: 62%; left: 40%;">
         <img src={PinIcon.src} alt="Marker" class="marker-default" />
         <img src="/billeder/PinHover-Fredericia.png" alt="Hover Marker" class="marker-hover" />
       </a>
@@ -112,6 +112,7 @@ import PinIcon from "/public/billeder/pin.png";
     opacity: 0;
     pointer-events: none;
     z-index: 2;
+    min-width: 8rem;
   }
 
   .marker:hover {
