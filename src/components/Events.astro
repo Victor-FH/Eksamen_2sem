@@ -1,10 +1,23 @@
 ---
-const SUPA_URL = "https://bwzlyynicfdhqxvfotfg.supabase.co/rest/v1/begivenheder";
-const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emx5eW5pY2ZkaHF4dmZvdGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzMjk5NjUsImV4cCI6MjA2MzkwNTk2NX0.iWIvQ6JD4u7LRTB0dUL8CuJFoys5U8sWInPGsV-kdjM";
+const SUPA_URL =
+  "https://bwzlyynicfdhqxvfotfg.supabase.co/rest/v1/begivenheder";
+const SUPA_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emx5eW5pY2ZkaHF4dmZvdGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzMjk5NjUsImV4cCI6MjA2MzkwNTk2NX0.iWIvQ6JD4u7LRTB0dUL8CuJFoys5U8sWInPGsV-kdjM";
 
 // build a URL that selects all needed cols, orders by index_by, limits to 4
 const url = new URL(SUPA_URL);
-url.searchParams.set("select", ["by", "dato", "tid1", "info1", "lille_billede", "begivenhed_info", "index_by"].join(","));
+url.searchParams.set(
+  "select",
+  [
+    "by",
+    "dato",
+    "tid1",
+    "info1",
+    "lille_billede",
+    "begivenhed_info",
+    "index_by",
+  ].join(",")
+);
 url.searchParams.set("order", "index_by.asc.nullslast");
 url.searchParams.set("limit", "4");
 
@@ -27,11 +40,25 @@ const events = await res.json();
   <div class="event-wrapper">
     {
       events.map((ev) => {
-        const src = ev.lille_billede ? (ev.lille_billede.startsWith("http") ? ev.lille_billede : `/billeder/${ev.lille_billede}`) : null;
+        const src = ev.lille_billede
+          ? ev.lille_billede.startsWith("http")
+            ? ev.lille_billede
+            : `/billeder/${ev.lille_billede}`
+          : null;
 
         return (
           <div class="event" key={ev.index_by}>
-            <div class="event-image-wrapper">{src ? <img class="event-image" src={src} alt={`Plakat for ${ev.by}`} /> : <div class="image-placeholder" />}</div>
+            <div class="event-image-wrapper">
+              {src ? (
+                <img
+                  class="event-image"
+                  src={src}
+                  alt={`Plakat for ${ev.by}`}
+                />
+              ) : (
+                <div class="image-placeholder" />
+              )}
+            </div>
             <div class="event-content">
               <div class="event-date">
                 <div class="event-date-inner">
